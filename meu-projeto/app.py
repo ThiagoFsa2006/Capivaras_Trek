@@ -18,7 +18,6 @@ st.markdown("""
 <style>
 
 /* Remove elementos do Streamlit */
-
 [data-testid="stHeader"]{
     display:none !important;
 }
@@ -40,7 +39,6 @@ footer{
 }
 
 /* Remove espaço superior */
-
 .block-container{
     padding-top:0rem !important;
     padding-left:1rem !important;
@@ -49,7 +47,6 @@ footer{
 }
 
 /* Fundo */
-
 .stApp{
     background: linear-gradient(
         180deg,
@@ -59,7 +56,6 @@ footer{
 }
 
 /* Logo */
-
 .logo{
     font-size:32px;
     font-weight:800;
@@ -67,30 +63,39 @@ footer{
     padding-top:8px;
 }
 
-/* Botões */
+/* ==================================================
+   BOTÕES MENU - FONTE 36PX
+   ================================================== */
 
-div[data-testid="stButton"] > button {
-    width:100%;
+div[data-testid="stButton"] button{
+    width:100% !important;
     background:transparent !important;
     border:none !important;
-    color:#244029 !important;
+    box-shadow:none !important;
+    min-height:80px !important;
+}
 
-    /* ALTERAÇÃO AQUI */
-    font-size:50px !important;
-
+/* força o tamanho de todos os elementos internos */
+div[data-testid="stButton"] button,
+div[data-testid="stButton"] button *,
+div[data-testid="stButton"] button span,
+div[data-testid="stButton"] button p{
+    font-size:36px !important;
     font-weight:700 !important;
-    padding:0.5rem 0 !important;
-    box-shadow:none !important;
+    color:#244029 !important;
 }
 
-div[data-testid="stButton"] > button:hover {
-    color:#6b8e23 !important;
+div[data-testid="stButton"] button:hover{
     background:transparent !important;
 }
 
-.stButton button:focus{
-    box-shadow:none !important;
+div[data-testid="stButton"] button:hover *{
+    color:#6b8e23 !important;
+}
+
+div[data-testid="stButton"] button:focus{
     border:none !important;
+    box-shadow:none !important;
 }
 
 </style>
@@ -108,7 +113,6 @@ with col_logo:
 
     col_img, col_txt = st.columns([0.65, 4])
 
-    # Caminho absoluto da logo
     logo_path = os.path.join(
         os.path.dirname(__file__),
         "assets",
@@ -153,9 +157,3 @@ with c5:
 st.write("")
 st.write("")
 st.write("")
-
-# Debug opcional (remova depois)
-
-# st.write("Pasta atual:", os.getcwd())
-# st.write("Logo existe:", os.path.exists(logo_path))
-# st.write("Caminho logo:", logo_path)
