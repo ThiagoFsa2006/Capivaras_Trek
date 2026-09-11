@@ -35,3 +35,22 @@ footer {
 
 </style>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+<div class="header-container">
+
+    <div class="header-menu">
+        #homeHome</a>
+        <arilhasTrilhas</a>
+        <acervoAcervo</a>
+        <a href="#calendario">Calendário</a>
+ogBlog</a>
+        <aontatoContato</a>
+    </div>
+
+    <div class="header-logo">
+        Capivaras Trek
+    </div>
+
+</div>
+""", unsafe_allow_html=True)
