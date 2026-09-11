@@ -1,28 +1,49 @@
 import streamlit as st
 
-st.set_page_config(page_title="Capivaras Trek", layout="wide")
+st.set_page_config(
+    page_title="Capivaras Trek",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
 
 st.markdown("""
 <style>
 
 /* Fundo da página */
 .stApp {
-    background: linear-gradient(135deg, #3E5831 0%, #FFFFFF 100%);
+    background: linear-gradient(
+        135deg,
+        #3E5831 0%,
+        #FFFFFF 100%
+    );
 }
 
-/* Esconde o cabeçalho nativo */
-header[data-testid="stHeader"],
-div[data-testid="stHeader"] {
+/* Remove elementos nativos do Streamlit */
+header[data-testid="stHeader"] {
     display: none;
+}
+
+[data-testid="stToolbar"] {
+    display: none;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
 }
 
 /* Remove espaço superior */
 .block-container {
     padding-top: 0.2rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     padding-bottom: 0rem !important;
 }
 
-/* Container do topo */
+/* Header */
 .header-container {
     border: 2px solid #333;
     border-radius: 12px;
@@ -30,55 +51,81 @@ div[data-testid="stHeader"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.92);
     margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.logo-area h1{
+/* Logo */
+.logo-area h1 {
     margin: 0;
+    color: #000;
     font-size: 36px;
-    color: black;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.logo-area p{
-    margin: 0;
-    font-size: 14px;
+.logo-area p {
+    margin-top: 5px;
+    margin-bottom: 0;
     color: #444;
+    font-size: 14px;
 }
 
-.menu{
+/* Menu */
+.menu {
     display: flex;
     gap: 25px;
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
-    color: black;
+    color: #000;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.menu a:hover{
-    color: #2e8b57;
+.menu a:hover {
+    color: #3E5831;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 56px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 22px;
 }
 
 </style>
-""", unsafe_allow_html=True)
 
 <div class="header-container">
+
     <div class="logo-area">
         <h1>Capivaras Trek</h1>
-        <p>Explore a Natureza, Siga os Capivaras</p>
+        <p>Explore a Natureza, Siga as Capivaras</p>
     </div>
-    <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#trilhas">Trilhas</a>
-        <a href="#acervo">Acervo</a>
-        <a href="#calendario">Calendário</a>
-        <a href="#contato">Contato</a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
-st.write("Conteúdo da página...")
+    <div class="menu">
+        #homeHome</a>
+        <arilhasTrilhas</a>
+        <acervoAcervo</a>
+        <a href="#calendario">Calendário  #contatoContato</a>
+    </div>
+
+</div>
+
+<div class="hero">
+    <h2>Bem-vindo ao Capivaras Trek</h2>
+    <p>Descubra trilhas, aventuras e a natureza de um jeito único.</p>
+</div>
+
+""", unsafe_allow_html=True)
