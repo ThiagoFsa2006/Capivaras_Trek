@@ -156,7 +156,7 @@ with c5:
 banner_path = os.path.join(
     os.path.dirname(__file__),
     "assets",
-    "banner_home.jpg"
+    "banner_home.heif"
 )
 
 if os.path.exists(banner_path):
