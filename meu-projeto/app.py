@@ -1,4 +1,6 @@
 import streamlit as st
+import os
+import base64
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -10,13 +12,29 @@ st.set_page_config(
 )
 
 # ==================================================
+# FUNÇÃO PARA CARREGAR A LOGO
+# ==================================================
+
+def get_base64(path):
+    with open(path, "rb") as img:
+        return base64.b64encode(img.read()).decode()
+
+logo_path = os.path.join(
+    os.path.dirname(__file__),
+    "assets",
+    "logo.png"
+)
+
+logo_base64 = get_base64(logo_path)
+
+# ==================================================
 # CSS GLOBAL
 # ==================================================
 
 st.markdown("""
 <style>
 
-/* Remove elementos do Streamlit */
+/* Remove elementos padrão do Streamlit */
 
 [data-testid="stHeader"]{
     display:none !important;
@@ -38,7 +56,7 @@ footer{
     visibility:hidden !important;
 }
 
-/* Remove espaço superior */
+/* Remove espaçamentos padrão */
 
 .block-container{
     padding-top:0rem !important;
@@ -47,7 +65,7 @@ footer{
     max-width:100% !important;
 }
 
-/* Fundo original */
+/* Fundo principal */
 
 .stApp{
     background: linear-gradient(
@@ -57,33 +75,25 @@ footer{
     );
 }
 
-/* Header */
-
-.header-box{
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(15px);
-
-    border:1px solid rgba(255,255,255,0.25);
-
-    border-radius:25px;
-
-    padding:10px 25px;
-
-    margin-top:10px;
-    margin-bottom:20px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
 /* Logo */
 
-.logo{
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.logo-area img{
+    height:70px;
+}
+
+.logo-text{
     font-size:32px;
     font-weight:800;
     color:#244029;
 }
 
-/* Botões */
+/* Botões da navbar */
 
 .stButton button{
     width:100%;
@@ -99,8 +109,6 @@ footer{
     transform:translateY(-2px);
 }
 
-/* Oculta bordas nos botões */
-
 .stButton button:focus{
     box-shadow:none !important;
     border:none !important;
@@ -108,40 +116,27 @@ footer{
 
 </style>
 """, unsafe_allow_html=True)
+
 # ==================================================
 # HEADER
 # ==================================================
-
-import os
 
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
     [4, 1, 1, 1, 1, 1, 1]
 )
 
 with col_logo:
-    col_img, col_txt = st.columns([0.5, 4])
-
-    with col_img:
-        st.image(logo_path, width=60)
-
-    with col_txt:
-        st.markdown(
-            '<div class="logo">Capivaras Trek</div>',
-            unsafe_allow_html=True
-        )
-
-    with col_img:
-        st.image(logo_path, width=60)
-
-    with col_txt:
-        st.markdown(
-            """
-            <div class="logo">
+    st.markdown(
+        f"""
+        <div class="logo-area">
+            data:image/png;base64,{logo_base64}
+            <div class="logo-text">
                 Capivaras Trek
             </div>
-            """,
-            unsafe_allow_html=True
-        )
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 with c1:
     st.button("Home")
@@ -160,3 +155,20 @@ with c5:
 
 with c6:
     st.button("Contato")
+
+# ==================================================
+# CONTEÚDO TEMPORÁRIO
+# ==================================================
+
+st.write("")
+st.write("")
+st.write("")
+
+st.markdown(
+    """
+    <h1 style='color:#244029'>
+        Bem-vindo ao Capivaras Trek 🥾
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
