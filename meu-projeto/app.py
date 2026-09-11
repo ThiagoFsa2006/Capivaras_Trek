@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import os
+import base64
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -151,37 +152,59 @@ with c5:
     st.button("Contato")
 
 # ==================================================
+# HELPER PARA CARREGAR IMAGEM LOCAL EM BASE64
+# ==================================================
+
+def get_image_base64(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as img_file:
+            encoded = base64.b64encode(img_file.read()).decode()
+        ext = os.path.splitext(file_path)[1].replace(".", "").lower()
+        if ext == "jpg":
+            ext = "jpeg"
+        return f"data:image/{ext};base64,{encoded}"
+    return ""
+
+# ==================================================
 # CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
-    carousel_html = """
+    # Caminho da imagem local dentro de assets/
+    img_path = os.path.join(os.path.dirname(__file__), "assets", "banner.jpg")
+    img_bg = get_image_base64(img_path)
+
+    # Se a imagem local não existir, usa uma imagem Unsplash de fallback
+    if not img_bg:
+        img_bg = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600"
+
+    carousel_html = f"""
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <style>
-        * {
+        * {{
           box-sizing: border-box;
           margin: 0;
           padding: 0;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        }}
 
-        body {
+        body {{
           background: transparent;
           padding: 10px 0;
-        }
+        }}
 
-        .swiper {
+        .swiper {{
           width: 100%;
           border-radius: 24px;
           overflow: hidden;
           box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
+        }}
 
-        .swiper-slide {
+        .swiper-slide {{
           position: relative;
           height: 480px;
           background-size: cover;
@@ -190,25 +213,24 @@ def render_hero_carousel():
           justify-content: center;
           align-items: center;
           color: #ffffff;
-        }
+        }}
 
-        /* Overlay escuro suave para leitura do texto */
-        .swiper-slide::before {
+        .swiper-slide::before {{
           content: "";
           position: absolute;
           inset: 0;
           background: rgba(0, 0, 0, 0.35);
           z-index: 1;
-        }
+        }}
 
-        .hero-title-container {
+        .hero-title-container {{
           position: relative;
           z-index: 2;
           text-align: center;
           padding: 0 20px;
-        }
+        }}
 
-        .hero-title {
+        .hero-title {{
           font-size: 52px;
           font-weight: 900;
           letter-spacing: 2px;
@@ -216,35 +238,33 @@ def render_hero_carousel():
           line-height: 1.2;
           color: #ffffff;
           text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-        }
+        }}
 
-        /* Paginação (Bolinhas) */
-        .swiper-pagination {
+        .swiper-pagination {{
           position: relative !important;
           margin-top: 15px !important;
           bottom: 0 !important;
-        }
+        }}
 
-        .swiper-pagination-bullet {
+        .swiper-pagination-bullet {{
           width: 12px;
           height: 12px;
           background: #244029;
           opacity: 0.4;
-        }
+        }}
 
-        .swiper-pagination-bullet-active {
+        .swiper-pagination-bullet-active {{
           background: #244029 !important;
           opacity: 1;
           width: 14px;
           height: 14px;
-        }
+        }}
 
-        /* Setas de navegação */
-        .swiper-button-next, .swiper-button-prev {
+        .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           transform: scale(0.6);
           z-index: 10;
-        }
+        }}
       </style>
     </head>
     <body>
@@ -252,15 +272,15 @@ def render_hero_carousel():
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
-          <!-- SLIDE 1 (Sua Imagem) -->
-          <div class="swiper-slide" style="background-image: url('https://i.imgur.com/3fR9k40.jpg');">
+          <!-- SLIDE 1 -->
+          <div class="swiper-slide" style="background-image: url('{img_bg}');">
             <div class="hero-title-container">
               <h1 class="hero-title">TRAVESSIA DA<br>SERRA DO MAR</h1>
             </div>
           </div>
 
-          <!-- SLIDE 2 (Exemplo adicional) -->
-          <div class="swiper-slide" style="background-image: url('https://i.imgur.com/3fR9k40.jpg');">
+          <!-- SLIDE 2 -->
+          <div class="swiper-slide" style="background-image: url('{img_bg}');">
             <div class="hero-title-container">
               <h1 class="hero-title">ACAMPAMENTO<br>DE ANO NOVO</h1>
             </div>
@@ -276,21 +296,21 @@ def render_hero_carousel():
 
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper = new Swiper(".mySwiper", {{
           loop: true,
-          autoplay: {
+          autoplay: {{
             delay: 4000,
             disableOnInteraction: false,
-          },
-          pagination: {
+          }},
+          pagination: {{
             el: ".swiper-pagination",
             clickable: true,
-          },
-          navigation: {
+          }},
+          navigation: {{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
-          },
-        });
+          }},
+        }});
       </script>
     </body>
     </html>
