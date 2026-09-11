@@ -37,20 +37,14 @@ footer {
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div class="header-container">
-
-    <div class="header-menu">
-        #homeHome</a>
-        #trilhasTrilhas</a>
-        #acervoAcervo</a>
-        <aalendarioCalendário</a>
-        #blogBlog</a>
-        <aontatoContato</a>
-    </div>
-
-    <div class="header-logo">
-        Capivaras Trek
-    </div>
-
+<div style="
+    position:fixed;
+    top:10px;
+    left:10px;
+    right:10px;
+    height:80px;
+    background:red;
+    z-index:9999;">
+    TESTE HEADER
 </div>
 """, unsafe_allow_html=True)
