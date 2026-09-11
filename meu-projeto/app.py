@@ -4,17 +4,25 @@ st.set_page_config(page_title="Capivaras Trek", layout="wide")
 
 st.markdown("""
 <style>
+
+/* Fundo da página */
+.stApp {
+    background: linear-gradient(135deg, #3E5831 0%, #FFFFFF 100%);
+}
+
 /* Esconde o cabeçalho nativo */
-header[data-testid="stHeader"], div[data-testid="stHeader"] {
+header[data-testid="stHeader"],
+div[data-testid="stHeader"] {
     display: none;
 }
 
-/* Remove o espaço em branco excessivo no topo da página */
+/* Remove espaço superior */
 .block-container {
-    padding-top: 1rem !important;
+    padding-top: 0.2rem !important;
     padding-bottom: 0rem !important;
 }
 
+/* Container do topo */
 .header-container {
     border: 2px solid #333;
     border-radius: 12px;
@@ -22,7 +30,7 @@ header[data-testid="stHeader"], div[data-testid="stHeader"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255,255,255,0.9);
     margin-bottom: 30px;
 }
 
@@ -54,7 +62,9 @@ header[data-testid="stHeader"], div[data-testid="stHeader"] {
 .menu a:hover{
     color: #2e8b57;
 }
+
 </style>
+""", unsafe_allow_html=True)
 
 <div class="header-container">
     <div class="logo-area">
