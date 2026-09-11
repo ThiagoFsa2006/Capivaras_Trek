@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-import base64
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -12,29 +11,13 @@ st.set_page_config(
 )
 
 # ==================================================
-# FUNÇÃO PARA CARREGAR A LOGO
-# ==================================================
-
-def get_base64(path):
-    with open(path, "rb") as img:
-        return base64.b64encode(img.read()).decode()
-
-logo_path = os.path.join(
-    os.path.dirname(__file__),
-    "assets",
-    "logo.png"
-)
-
-logo_base64 = get_base64(logo_path)
-
-# ==================================================
 # CSS GLOBAL
 # ==================================================
 
 st.markdown("""
 <style>
 
-/* Remove elementos padrão do Streamlit */
+/* Remove elementos do Streamlit */
 
 [data-testid="stHeader"]{
     display:none !important;
@@ -56,7 +39,7 @@ footer{
     visibility:hidden !important;
 }
 
-/* Remove espaçamentos padrão */
+/* Remove espaço superior */
 
 .block-container{
     padding-top:0rem !important;
@@ -65,7 +48,7 @@ footer{
     max-width:100% !important;
 }
 
-/* Fundo principal */
+/* Fundo */
 
 .stApp{
     background: linear-gradient(
@@ -77,23 +60,14 @@ footer{
 
 /* Logo */
 
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.logo-area img{
-    height:70px;
-}
-
-.logo-text{
+.logo{
     font-size:32px;
     font-weight:800;
     color:#244029;
+    padding-top:8px;
 }
 
-/* Botões da navbar */
+/* Botões */
 
 .stButton button{
     width:100%;
@@ -126,17 +100,31 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 )
 
 with col_logo:
-    st.markdown(
-        f"""
-        <div class="logo-area">
-            data:image/png;base64,{logo_base64}
-            <div class="logo-text">
+
+    col_img, col_txt = st.columns([1, 4])
+
+    # Caminho absoluto da logo
+    logo_path = os.path.join(
+        os.path.dirname(__file__),
+        "assets",
+        "logo.png"
+    )
+
+    with col_img:
+        if os.path.exists(logo_path):
+            st.image(logo_path, width=70)
+        else:
+            st.error(f"Logo não encontrada: {logo_path}")
+
+    with col_txt:
+        st.markdown(
+            """
+            <div class="logo">
                 Capivaras Trek
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+            """,
+            unsafe_allow_html=True
+        )
 
 with c1:
     st.button("Home")
@@ -164,11 +152,8 @@ st.write("")
 st.write("")
 st.write("")
 
-st.markdown(
-    """
-    <h1 style='color:#244029'>
-        Bem-vindo ao Capivaras Trek 🥾
-    </h1>
-    """,
-    unsafe_allow_html=True
-)
+# Debug opcional (remova depois)
+
+# st.write("Pasta atual:", os.getcwd())
+# st.write("Logo existe:", os.path.exists(logo_path))
+# st.write("Caminho logo:", logo_path)
