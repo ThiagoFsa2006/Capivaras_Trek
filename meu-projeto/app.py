@@ -169,7 +169,7 @@ if os.path.exists(banner_path):
     img = Image.open(banner_path)
 
     # gira para posição correta
-    img = img.rotate(270, expand=True)
+    img = img.rotate(270)
 
     largura, altura = img.size
 
