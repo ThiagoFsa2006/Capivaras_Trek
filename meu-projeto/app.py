@@ -69,16 +69,15 @@ footer{
 
 /* Botões */
 
-.stButton button{
+.stButton > button {
     width:100%;
     background:transparent;
     border:none;
     color:#244029;
-    font-weight:700;
-    font-size:50px;
+    font-weight:700 !important;
+    font-size:24px !important;
     transition:0.3s;
 }
-
 .stButton button:hover{
     color:#6b8e23;
     transform:translateY(-2px);
