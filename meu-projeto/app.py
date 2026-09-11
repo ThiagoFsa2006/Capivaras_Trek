@@ -97,8 +97,8 @@ div[data-testid="stButton"] > button:hover {
 # HEADER
 # ==================================================
 
-col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
-    [4, 1, 1, 1, 1, 1, 1]
+col_logo, c1, c2, c3, c4, c5 = st.columns(
+    [4, 1, 1, 1, 1, 1]
 )
 
 with col_logo:
@@ -141,9 +141,6 @@ with c4:
     st.button("Calendário")
 
 with c5:
-    st.button("Blog")
-
-with c6:
     st.button("Contato")
 
 # ==================================================
