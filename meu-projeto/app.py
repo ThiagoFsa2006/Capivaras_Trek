@@ -4,6 +4,11 @@ st.set_page_config(page_title="Capivaras Trek", layout="wide")
 
 st.markdown("""
 <style>
+/* Oculta a barra/cabeçalho superior padrão do Streamlit */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
 .header-container {
     border: 2px solid #333;
     border-radius: 12px;
