@@ -178,7 +178,7 @@ if os.path.exists(banner_path):
     direita  = int(largura * 0.75)
 
     topo     = int(altura * 0.25)
-    baixo    = int(altura * 0.75)
+    baixo    = int(altura * 0.65)
 
     img = img.crop(
         (esquerda, topo, direita, baixo)
