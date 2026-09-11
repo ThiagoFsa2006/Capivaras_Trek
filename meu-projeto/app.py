@@ -57,7 +57,7 @@ footer{
 
 /* Logo */
 .logo{
-    font-size:36px;
+    font-size:34px;
     font-weight:800;
     color:#244029;
     padding-top:8px;
@@ -121,7 +121,7 @@ with col_logo:
 
     with col_img:
         if os.path.exists(logo_path):
-            st.image(logo_path, width=70)
+            st.image(logo_path, width=80)
         else:
             st.error(f"Logo não encontrada: {logo_path}")
 
