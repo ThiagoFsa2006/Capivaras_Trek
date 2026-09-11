@@ -151,7 +151,7 @@ with c5:
     st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO (VERSÃO LIMPA)
+# CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
@@ -192,7 +192,7 @@ def render_hero_carousel():
           color: #ffffff;
         }
 
-        /* Overlay escuro leve para contraste do texto */
+        /* Overlay escuro suave para leitura do texto */
         .swiper-slide::before {
           content: "";
           position: absolute;
@@ -252,15 +252,15 @@ def render_hero_carousel():
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
-          <!-- SLIDE 1 -->
-          <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600');">
+          <!-- SLIDE 1 (Sua Imagem) -->
+          <div class="swiper-slide" style="background-image: url('https://i.imgur.com/3fR9k40.jpg');">
             <div class="hero-title-container">
               <h1 class="hero-title">TRAVESSIA DA<br>SERRA DO MAR</h1>
             </div>
           </div>
 
-          <!-- SLIDE 2 -->
-          <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=1600');">
+          <!-- SLIDE 2 (Exemplo adicional) -->
+          <div class="swiper-slide" style="background-image: url('https://i.imgur.com/3fR9k40.jpg');">
             <div class="hero-title-container">
               <h1 class="hero-title">ACAMPAMENTO<br>DE ANO NOVO</h1>
             </div>
