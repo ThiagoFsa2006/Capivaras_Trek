@@ -1,22 +1,22 @@
 import streamlit as st
 
-# --------------------------------------------------
+# ==================================================
 # CONFIGURAÇÃO DA PÁGINA
-# --------------------------------------------------
+# ==================================================
 
 st.set_page_config(
     page_title="Capivaras Trek",
     layout="wide"
 )
 
-# --------------------------------------------------
+# ==================================================
 # CSS GLOBAL
-# --------------------------------------------------
+# ==================================================
 
 st.markdown("""
 <style>
 
-/* REMOVE ELEMENTOS NATIVOS DO STREAMLIT */
+/* Remove elementos do Streamlit */
 
 [data-testid="stHeader"]{
     display:none !important;
@@ -38,30 +38,16 @@ footer{
     visibility:hidden !important;
 }
 
-/* REMOVE BARRA DO COMMUNITY CLOUD */
-
-div[data-testid="stStatusWidget"]{
-    display:none !important;
-}
-
-button[kind="header"]{
-    display:none !important;
-}
-
-.stAppDeployButton{
-    display:none !important;
-}
-
-/* AJUSTE GERAL */
+/* Remove espaço superior */
 
 .block-container{
     padding-top:0rem !important;
-    padding-left:0rem !important;
-    padding-right:0rem !important;
+    padding-left:1rem !important;
+    padding-right:1rem !important;
     max-width:100% !important;
 }
 
-/* FUNDO ORIGINAL */
+/* Fundo original */
 
 .stApp{
     background: linear-gradient(
@@ -71,95 +57,98 @@ button[kind="header"]{
     );
 }
 
-/* HEADER */
+/* Header */
 
-.capy-header{
-    position:fixed;
-    top:15px;
-    left:20px;
-    right:20px;
-
-    height:80px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 40px;
-
-    background:rgba(255,255,255,0.18);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+.header-box{
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
 
     border:1px solid rgba(255,255,255,0.25);
 
-    border-radius:22px;
+    border-radius:25px;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    padding:10px 25px;
 
-    z-index:9999;
+    margin-top:10px;
+    margin-bottom:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
-/* LOGO */
+/* Logo */
 
-.capy-logo{
-    font-size:30px;
+.logo{
+    font-size:32px;
     font-weight:800;
-    color:#243b21;
+    color:#244029;
 }
 
-/* MENU */
+/* Botões */
 
-.capy-menu{
-    display:flex;
-    gap:30px;
+.stButton button{
+    width:100%;
+    background:transparent;
+    border:none;
+    color:#244029;
+    font-weight:700;
+    transition:0.3s;
 }
 
-.capy-menu a{
-    text-decoration:none;
-    color:#2d4f2b;
-    font-size:16px;
-    font-weight:600;
-
-    transition:all .3s ease;
-}
-
-.capy-menu a:hover{
+.stButton button:hover{
     color:#6b8e23;
     transform:translateY(-2px);
 }
 
-/* ESPAÇO PARA O HEADER FIXO */
+/* Oculta bordas nos botões */
 
-.page-spacing{
-    height:110px;
+.stButton button:focus{
+    box-shadow:none !important;
+    border:none !important;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
+# ==================================================
 # HEADER
-# --------------------------------------------------
+# ==================================================
 
-st.markdown("""
-<div class="capy-header">
+st.markdown('<div class="header-box">', unsafe_allow_html=True)
 
-    <div class="capy-logo">
-        🦫 Capivaras Trek
-    </div>
+col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
+    [4,1,1,1,1,1,1]
+)
 
-    <div class="capy-menu">
-        #Home</a>
-        #Trilhas</a>
-        #Acervo</a>
-        #Calendário</a>
-        #Blog</a>
-        #Contato</a>
-    </div>
+with col_logo:
+    st.markdown(
+        '<div class="logo">🦫 Capivaras Trek</div>',
+        unsafe_allow_html=True
+    )
 
-</div>
+with c1:
+    st.button("Home")
 
-<div class="page-spacing"></div>
-""", unsafe_allow_html=True)
+with c2:
+    st.button("Trilhas")
+
+with c3:
+    st.button("Acervo")
+
+with c4:
+    st.button("Calendário")
+
+with c5:
+    st.button("Blog")
+
+with c6:
+    st.button("Contato")
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+# ==================================================
+# CONTEÚDO TEMPORÁRIO
+# ==================================================
+
+st.write("")
+st.write("")
+st.write("")
