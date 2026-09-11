@@ -16,31 +16,32 @@ st.markdown("""
 }
 
 .logo-area h1{
-    margin:0;
-    font-size:36px;
-    color:black;
-    font-weight:bold;
+    margin: 0;
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
 }
 
 .logo-area p{
-    margin:0;
-    font-size:14px;
-    color:#444;
+    margin: 0;
+    font-size: 14px;
+    color: #444;
 }
 
 .menu{
-    display:flex;
-    gap:25px;
+    display: flex;
+    gap: 25px;
 }
 
 .menu a{
-    text-decoration:none;
-    color:black;
-    font-size:16px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .menu a:hover{
-    color:#2e8b57;
+    color: #2e8b57;
 }
 </style>
 
@@ -49,14 +50,13 @@ st.markdown("""
         <h1>Capivaras Trek</h1>
         <p>Explore a Natureza, Siga as Capivaras</p>
     </div>
-
     <div class="menu">
-        #Home</a>
-        #Trilhas</a>
-        #Acervo</a>
-        #Calendário</a>
-        #Blog</a>
-        #Contato</a>
+        <a href="#home">Home</a>
+        <a href="#trilhas">Trilhas</a>
+        <a href="#acervo">Acervo</a>
+        <a href="#calendario">Calendário</a>
+        <a href="#blog">Blog</a>
+        <a href="#contato">Contato</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
