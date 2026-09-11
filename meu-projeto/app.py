@@ -64,7 +64,7 @@ footer{
 }
 
 /* ==================================================
-   BOTÕES MENU - FONTE 36PX
+   BOTÕES MENU - FONTE 18px
    ================================================== */
 
 div[data-testid="stButton"] button{
@@ -80,7 +80,7 @@ div[data-testid="stButton"] button,
 div[data-testid="stButton"] button *,
 div[data-testid="stButton"] button span,
 div[data-testid="stButton"] button p{
-    font-size:20px !important;
+    font-size:18px !important;
     font-weight:700 !important;
     color:#244029 !important;
 }
