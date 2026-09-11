@@ -98,7 +98,7 @@ div[data-testid="stButton"] > button:hover {
 # ==================================================
 
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
-    [4, 1, 1, 1, 1, 1, 1]
+    [4, 1.3, 1.3, 1.3, 1.8, 1.1, 1.3]
 )
 
 with col_logo:
