@@ -1,6 +1,12 @@
 import streamlit as st
 
-st.set_page_config(page_title="Minha Página", layout="wide")
+st.set_page_config(
+    page_title="Capivaras Trek",
+    layout="wide"
+)
+
+st.markdown("""
+<style>
 
 .header-container{
     position:fixed;
@@ -38,11 +44,6 @@ st.set_page_config(page_title="Minha Página", layout="wide")
     color:#29402a;
     font-size:16px;
     font-weight:600;
-    transition:0.3s;
-}
-
-.header-menu a:hover{
-    color:#6b8e23;
 }
 
 .header-logo{
@@ -51,16 +52,19 @@ st.set_page_config(page_title="Minha Página", layout="wide")
     color:#1f3a1f;
 }
 
+</style>
+""", unsafe_allow_html=True)
+
 st.markdown("""
 <div class="header-container">
 
     <div class="header-menu">
         #Home</a>
-        <arilhas</a>
+        #Trilhas</a>
         #Acervo</a>
         #Calendário</a>
-        <a href="#">Blog</a>
-ntato</a>
+        #Blog</a>
+        #Contato</a>
     </div>
 
     <div class="header-logo">
