@@ -76,7 +76,7 @@ div[data-testid="stButton"] > button {
     color:#244029 !important;
 
     /* ALTERAÇÃO AQUI */
-    font-size:28px !important;
+    font-size:50px !important;
 
     font-weight:700 !important;
     padding:0.5rem 0 !important;
