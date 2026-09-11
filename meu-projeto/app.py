@@ -119,14 +119,16 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 )
 
 with col_logo:
+    col_img, col_txt = st.columns([0.5, 4])
 
-    col_img, col_txt = st.columns([1, 4])
+    with col_img:
+        st.image(logo_path, width=60)
 
-    logo_path = os.path.join(
-        os.path.dirname(__file__),
-        "assets",
-        "logo.png"
-    )
+    with col_txt:
+        st.markdown(
+            '<div class="logo">Capivaras Trek</div>',
+            unsafe_allow_html=True
+        )
 
     with col_img:
         st.image(logo_path, width=60)
