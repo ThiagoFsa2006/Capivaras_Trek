@@ -56,20 +56,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div class="header-container">
-
-    <div class="header-menu">
-        #Home</a>
-        #Trilhas</a>
-        #Acervo</a>
-        #Calendário</a>
-        #Blog</a>
-        #Contato</a>
-    </div>
-
-    <div class="header-logo">
-        🦫 Capivaras Trek
-    </div>
-
+<div style="background:red;color:white;padding:20px;">
+    HEADER TESTE
 </div>
 """, unsafe_allow_html=True)
