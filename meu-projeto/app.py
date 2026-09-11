@@ -128,7 +128,6 @@ with col_logo:
             '<div class="logo">Capivaras Trek</div>',
             unsafe_allow_html=True
         )
-``
 
 with c1:
     st.button("Home")
