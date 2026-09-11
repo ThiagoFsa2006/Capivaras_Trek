@@ -30,7 +30,7 @@ footer {
 }
 
 .stApp {
-    background: linear-gradient(135deg, #3E5831 0%, #FFFFFF 100%);
+    background: linear-gradient(180deg, #97a97c 0%, #FFFFFF 100%);
 }
 
 </style>
