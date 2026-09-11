@@ -1,6 +1,4 @@
 import streamlit as st
-from PIL import Image
-import os
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -12,13 +10,13 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS
+# CSS GLOBAL
 # ==================================================
 
 st.markdown("""
 <style>
 
-/* Remove elementos nativos do Streamlit */
+/* Remove elementos do Streamlit */
 
 [data-testid="stHeader"]{
     display:none !important;
@@ -40,57 +38,72 @@ footer{
     visibility:hidden !important;
 }
 
-/* Layout */
+/* Remove espaço superior */
 
 .block-container{
-    padding-top: 1rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    max-width: 100% !important;
+    padding-top:0rem !important;
+    padding-left:1rem !important;
+    padding-right:1rem !important;
+    max-width:100% !important;
 }
 
-/* Fundo */
+/* Fundo original */
 
 .stApp{
     background: linear-gradient(
         180deg,
         #97a97c 0%,
-        #ffffff 100%
+        #FFFFFF 100%
     );
+}
+
+/* Header */
+
+.header-box{
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(15px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    border-radius:25px;
+
+    padding:10px 25px;
+
+    margin-top:10px;
+    margin-bottom:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
 /* Logo */
 
-.logo-titulo{
-    font-size: 34px;
-    font-weight: 800;
-    color: #244029;
-    margin-top: 12px;
+.logo{
+    font-size:32px;
+    font-weight:800;
+    color:#244029;
 }
 
-/* Botões menu */
+/* Botões */
 
-.stButton > button{
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    color: #244029 !important;
-    font-weight: 700 !important;
-
-    transition: all .3s ease;
+.stButton button{
+    width:100%;
+    background:transparent;
+    border:none;
+    color:#244029;
+    font-weight:700;
+    transition:0.3s;
 }
 
-.stButton > button:hover{
-    color: #6b8e23 !important;
-    transform: translateY(-2px);
+.stButton button:hover{
+    color:#6b8e23;
+    transform:translateY(-2px);
 }
 
-/* Remove bordas ao clicar */
+/* Oculta bordas nos botões */
 
-.stButton > button:focus{
-    border: none !important;
-    box-shadow: none !important;
+.stButton button:focus{
+    box-shadow:none !important;
+    border:none !important;
 }
 
 </style>
@@ -100,62 +113,42 @@ footer{
 # HEADER
 # ==================================================
 
+st.markdown('<div class="header-box">', unsafe_allow_html=True)
+
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
-    [4, 1, 1, 1, 1, 1, 1]
+    [4,1,1,1,1,1,1]
 )
 
 with col_logo:
-
-    img_col, txt_col = st.columns([1, 5])
-
-    with img_col:
-
-        if os.path.exists("logo.png"):
-            logo = Image.open("logo.png")
-            st.image(logo, width=85)
-        else:
-            st.markdown(
-                "<h1 style='margin-top:10px;'>🦫</h1>",
-                unsafe_allow_html=True
-            )
-
-    with txt_col:
-        st.markdown(
-            """
-            <div class="logo-titulo">
-                Capivaras Trek
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+    st.markdown(
+        '<div class="logo">🦫 Capivaras Trek</div>',
+        unsafe_allow_html=True
+    )
 
 with c1:
-    st.button("Home", use_container_width=True)
+    st.button("Home")
 
 with c2:
-    st.button("Trilhas", use_container_width=True)
+    st.button("Trilhas")
 
 with c3:
-    st.button("Acervo", use_container_width=True)
+    st.button("Acervo")
 
 with c4:
-    st.button("Calendário", use_container_width=True)
+    st.button("Calendário")
 
 with c5:
-    st.button("Blog", use_container_width=True)
+    st.button("Blog")
 
 with c6:
-    st.button("Contato", use_container_width=True)
+    st.button("Contato")
 
-# ==================================================
-# ESPAÇAMENTO
-# ==================================================
-
-st.write("")
-st.write("")
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
 # ==================================================
 
-st.empty()
+st.write("")
+st.write("")
+st.write("")
