@@ -118,10 +118,17 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 )
 
 with col_logo:
-    st.image(
-        "assets/logo.png",
-        width=250
-    )
+    col_img, col_txt = st.columns([1, 4])
+
+    with col_img:
+        st.image("assets/logo.png", width=60)
+
+    with col_txt:
+        st.markdown(
+            '<div class="logo">Capivaras Trek</div>',
+            unsafe_allow_html=True
+        )
+``
 
 with c1:
     st.button("Home")
