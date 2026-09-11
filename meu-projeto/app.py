@@ -149,6 +149,8 @@ with c4:
 
 with c5:
     st.button("Contato")
+from PIL import Image
+
 # ==================================================
 # BANNER
 # ==================================================
@@ -160,8 +162,20 @@ banner_path = os.path.join(
 )
 
 if os.path.exists(banner_path):
+
+    img = Image.open(banner_path)
+
+    # gira a foto
+    img = img.rotate(90, expand=True)
+
+    # transforma em banner horizontal
+    largura_desejada = 1600
+    altura_desejada = 450
+
+    img = img.resize((largura_desejada, altura_desejada))
+
     st.image(
-        banner_path,
+        img,
         use_container_width=True
     )
 # ==================================================
