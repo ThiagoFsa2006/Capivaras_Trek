@@ -149,7 +149,21 @@ with c4:
 
 with c5:
     st.button("Contato")
+# ==================================================
+# BANNER
+# ==================================================
 
+banner_path = os.path.join(
+    os.path.dirname(__file__),
+    "assets",
+    "banner_home.jpg"
+)
+
+if os.path.exists(banner_path):
+    st.image(
+        banner_path,
+        use_container_width=True
+    )
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
 # ==================================================
