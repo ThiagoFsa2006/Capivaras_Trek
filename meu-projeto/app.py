@@ -41,10 +41,10 @@ st.markdown("""
 
     <div class="header-menu">
         #homeHome</a>
-        <arilhasTrilhas</a>
-        <acervoAcervo</a>
-        <a href="#calendario">Calendário</a>
-ogBlog</a>
+        #trilhasTrilhas</a>
+        #acervoAcervo</a>
+        <aalendarioCalendário</a>
+        #blogBlog</a>
         <aontatoContato</a>
     </div>
 
