@@ -1,6 +1,4 @@
 import streamlit as st
-from PIL import Image
-logo = Image.open("logo.png")
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -40,13 +38,13 @@ footer{
     visibility:hidden !important;
 }
 
-/* Remove espaço superior */
+/* Espaçamento da página */
 
 .block-container{
-    padding-top:0rem !important;
-    padding-left:1rem !important;
-    padding-right:1rem !important;
-    max-width:100% !important;
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100% !important;
 }
 
 /* Fundo original */
@@ -59,53 +57,28 @@ footer{
     );
 }
 
-/* Header */
-
-.header-box{
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(15px);
-
-    border:1px solid rgba(255,255,255,0.25);
-
-    border-radius:25px;
-
-    padding:10px 25px;
-
-    margin-top:10px;
-    margin-bottom:20px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
 /* Logo */
 
-.logo{
-    font-size:32px;
-    font-weight:800;
-    color:#244029;
+.logo-titulo{
+    font-size: 34px;
+    font-weight: 800;
+    color: #244029;
+    padding-top: 12px;
 }
 
-/* Botões */
+/* Botões do menu */
 
 .stButton button{
-    width:100%;
-    background:transparent;
-    border:none;
-    color:#244029;
-    font-weight:700;
-    transition:0.3s;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    color: #244029 !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
 }
 
 .stButton button:hover{
-    color:#6b8e23;
-    transform:translateY(-2px);
-}
-
-/* Oculta bordas nos botões */
-
-.stButton button:focus{
-    box-shadow:none !important;
-    border:none !important;
+    color: #6b8e23 !important;
 }
 
 </style>
@@ -115,28 +88,22 @@ footer{
 # HEADER
 # ==================================================
 
-
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
     [4,1,1,1,1,1,1]
 )
 
 with col_logo:
-    st.markdown("""
-    <div style="
-        display:flex;
-        align-items:center;
-        gap:15px;
-    ">
-        app/static/logo.png
-        <span style="
-            font-size:34px;
-            font-weight:800;
-            color:#244029;
-        ">
-            Capivaras Trek
-        </span>
-    </div>
-    """, unsafe_allow_html=True)
+
+    img_col, text_col = st.columns([1, 4])
+
+    with img_col:
+        st.image("logo.png", width=90)
+
+    with text_col:
+        st.markdown(
+            '<div class="logo-titulo">Capivaras Trek</div>',
+            unsafe_allow_html=True
+        )
 
 with c1:
     st.button("Home")
@@ -156,6 +123,7 @@ with c5:
 with c6:
     st.button("Contato")
 
+st.divider()
 
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
