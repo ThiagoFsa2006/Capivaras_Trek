@@ -152,6 +152,8 @@ with c5:
     st.button("Contato")
 from PIL import Image
 
+from PIL import Image
+
 # ==================================================
 # BANNER
 # ==================================================
@@ -166,17 +168,17 @@ if os.path.exists(banner_path):
 
     img = Image.open(banner_path)
 
-    # gira 270 graus
+    # gira para posição correta
     img = img.rotate(270, expand=True)
 
     largura, altura = img.size
 
-    # crop central semelhante ao retângulo vermelho
-    esquerda = int(largura * 0.38)
-    direita  = int(largura * 0.62)
+    # mantém somente a região central do monte
+    esquerda = int(largura * 0.25)
+    direita  = int(largura * 0.75)
 
-    topo     = int(altura * 0.30)
-    baixo    = int(altura * 0.70)
+    topo     = int(altura * 0.35)
+    baixo    = int(altura * 0.65)
 
     img = img.crop(
         (esquerda, topo, direita, baixo)
