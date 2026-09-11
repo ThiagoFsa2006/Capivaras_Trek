@@ -60,7 +60,7 @@ footer{
     font-size:36px;
     font-weight:800;
     color:#244029;
-    padding-top:8px;
+    padding-top:10px;
 }
 
 /* ==================================================
