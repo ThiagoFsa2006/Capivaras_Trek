@@ -163,8 +163,27 @@ banner_path = os.path.join(
 )
 
 if os.path.exists(banner_path):
+
+    img = Image.open(banner_path)
+
+    # gira 270 graus
+    img = img.rotate(270, expand=True)
+
+    largura, altura = img.size
+
+    # crop central semelhante ao retângulo vermelho
+    esquerda = int(largura * 0.38)
+    direita  = int(largura * 0.62)
+
+    topo     = int(altura * 0.30)
+    baixo    = int(altura * 0.70)
+
+    img = img.crop(
+        (esquerda, topo, direita, baixo)
+    )
+
     st.image(
-        banner_path,
+        img,
         use_container_width=True
     )
 # ==================================================
