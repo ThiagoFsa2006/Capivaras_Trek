@@ -5,10 +5,32 @@ st.set_page_config(page_title="Minha Página", layout="wide")
 st.markdown("""
 <style>
 
-/* Fundo da página */
+[data-testid="stHeader"] {
+    display: none !important;
+}
+
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+#MainMenu {
+    visibility: hidden !important;
+}
+
+footer {
+    visibility: hidden !important;
+}
+
+.block-container {
+    padding-top: 0rem !important;
+}
+
 .stApp {
-    background: linear-gradient(185deg, #b5c99a 0%, #dad7cd 100%);
-    height: 100vh;
+    background: linear-gradient(135deg, #3E5831 0%, #FFFFFF 100%);
 }
 
 </style>
