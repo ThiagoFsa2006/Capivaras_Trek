@@ -4,12 +4,17 @@ st.set_page_config(page_title="Capivaras Trek", layout="wide")
 
 st.markdown("""
 <style>
+/* Aplica o fundo gradiente em toda a aplicação */
+.stApp {
+    background: linear-gradient(135deg, #3E5831 0%, #FFFFFF 100%);
+}
+
 /* Esconde o cabeçalho nativo */
 header[data-testid="stHeader"], div[data-testid="stHeader"] {
     display: none;
 }
 
-/* Remove o espaço em branco excessivo no topo da página */
+/* Remove o espaço em branco no topo da página */
 .block-container {
     padding-top: 1rem !important;
     padding-bottom: 0rem !important;
