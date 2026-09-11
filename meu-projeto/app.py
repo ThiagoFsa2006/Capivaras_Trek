@@ -75,7 +75,7 @@ footer{
     border:none;
     color:#244029;
     font-weight:700;
-    font-size:22px;
+    font-size:28px;
     transition:0.3s;
 }
 
