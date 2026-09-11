@@ -7,7 +7,7 @@ st.markdown("""
 
 /* Fundo da página */
 .stApp {
-    background: linear-gradient(185deg, #588157 0%, #dad7cd 100%);
+    background: linear-gradient(185deg, #b5c99a 0%, #dad7cd 100%);
     height: 100vh;
 }
 
