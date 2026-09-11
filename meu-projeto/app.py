@@ -166,7 +166,7 @@ if os.path.exists(banner_path):
     img = Image.open(banner_path)
 
     # gira a foto
-    img = img.rotate(270, expand=True)
+    img = img.rotate(270)
 
     # transforma em banner horizontal
     largura_desejada = 1600
