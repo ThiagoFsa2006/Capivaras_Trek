@@ -57,7 +57,7 @@ footer{
 
 /* Logo */
 .logo{
-    font-size:32px;
+    font-size:36px;
     font-weight:800;
     color:#244029;
     padding-top:8px;
