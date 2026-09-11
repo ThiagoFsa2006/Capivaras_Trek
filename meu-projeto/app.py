@@ -1,32 +1,63 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Hello World",
-    layout="wide"
-)
+st.set_page_config(page_title="Capivaras Trek", layout="wide")
 
 st.markdown("""
 <style>
-[data-testid="stHeader"] {
-    display: none;
+.header-container {
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 30px;
 }
-[data-testid="stToolbar"] {
-    display: none;
+
+.logo-area h1{
+    margin:0;
+    font-size:36px;
+    color:black;
+    font-weight:bold;
 }
-[data-testid="stDecoration"] {
-    display: none;
+
+.logo-area p{
+    margin:0;
+    font-size:14px;
+    color:#444;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:black;
+    font-size:16px;
+}
+
+.menu a:hover{
+    color:#2e8b57;
 }
 </style>
-""", unsafe_allow_html=True)
 
-st.markdown("""
-<div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;">
-    <h1 style="color:black;font-size:36px;">
-        Hello World
-    </h1>
+<div class="header-container">
+    <div class="logo-area">
+        <h1>Capivaras Trek</h1>
+        <p>Explore a Natureza, Siga as Capivaras</p>
+    </div>
+
+    <div class="menu">
+        <a hrefa>
+        #Trilhas</a>
+        <a href="#">Acervo</aCalendário</a>
+        <alog</a>
+        #Contato</a>
+    </div>
 </div>
 """, unsafe_allow_html=True)
+
+st.write("Conteúdo da página...")
