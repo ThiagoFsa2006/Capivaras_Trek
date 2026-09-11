@@ -163,24 +163,8 @@ banner_path = os.path.join(
 )
 
 if os.path.exists(banner_path):
-
-    img = Image.open(banner_path)
-
-    # gira para a esquerda
-    img = img.rotate(270)
-
-    largura, altura = img.size
-
-    # banner panorâmico
-    altura_banner = int(largura * 0.30)
-
-    top = (altura - altura_banner) // 2
-    bottom = top + altura_banner
-
-    img = img.crop((0, top, largura, bottom))
-
     st.image(
-        img,
+        banner_path,
         use_container_width=True
     )
 # ==================================================
