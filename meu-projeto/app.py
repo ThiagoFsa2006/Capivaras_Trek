@@ -186,7 +186,7 @@ if os.path.exists(banner_path):
 
     st.image(
             img,
-            width=900
+            width=700
         )
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
