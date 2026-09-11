@@ -80,7 +80,7 @@ div[data-testid="stButton"] button,
 div[data-testid="stButton"] button *,
 div[data-testid="stButton"] button span,
 div[data-testid="stButton"] button p{
-    font-size:28px !important;
+    font-size:24px !important;
     font-weight:700 !important;
     color:#244029 !important;
 }
