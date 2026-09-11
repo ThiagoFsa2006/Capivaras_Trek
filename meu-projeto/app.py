@@ -70,12 +70,8 @@ footer{
 /* Botões */
 
 div[data-testid="stButton"] > button {
-    width:100%;
-    background:transparent;
-    border:none;
-    color:#244029;
-    font-weight:700 !important;
-    font-size:24px !important;
+    font-size:40px !important;
+    color:red !important;
 }
 .stButton button:hover{
     color:#6b8e23;
