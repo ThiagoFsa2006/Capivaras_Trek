@@ -1,4 +1,6 @@
 import streamlit as st
+from PIL import Image
+logo = Image.open("logo.png")
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
