@@ -1,6 +1,5 @@
 import streamlit as st
 import os
-from PIL import Image
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -150,44 +149,7 @@ with c4:
 
 with c5:
     st.button("Contato")
-from PIL import Image
 
-from PIL import Image
-
-# ==================================================
-# BANNER
-# ==================================================
-
-banner_path = os.path.join(
-    os.path.dirname(__file__),
-    "assets",
-    "banner_home.jpg"
-)
-
-if os.path.exists(banner_path):
-
-    img = Image.open(banner_path)
-
-    # gira para posição correta
-    img = img.rotate(270)
-
-    largura, altura = img.size
-
-    # mantém somente a região central do monte
-    esquerda = int(largura * 0.25)
-    direita  = int(largura * 0.75)
-
-    topo     = int(altura * 0.25)
-    baixo    = int(altura * 0.65)
-
-    img = img.crop(
-        (esquerda, topo, direita, baixo)
-    )
-
-    st.image(
-            img,
-            width=700
-        )
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
 # ==================================================
