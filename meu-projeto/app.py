@@ -66,7 +66,6 @@ header[data-testid="stHeader"], div[data-testid="stHeader"] {
         <a href="#trilhas">Trilhas</a>
         <a href="#acervo">Acervo</a>
         <a href="#calendario">Calendário</a>
-        <a href="#blog">Blog</a>
         <a href="#contato">Contato</a>
     </div>
 </div>
