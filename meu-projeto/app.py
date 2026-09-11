@@ -70,19 +70,22 @@ footer{
 /* Botões */
 
 div[data-testid="stButton"] > button {
-    width: 100%;
-    background: transparent !important;
-    border: none !important;
-    color: #244029 !important;
-    font-size: 24px !important;   /* antes era 18px */
-    font-weight: 700 !important;
-    padding: 0.5rem 0 !important;
-    box-shadow: none !important;
+    width:100%;
+    background:transparent !important;
+    border:none !important;
+    color:#244029 !important;
+
+    /* ALTERAÇÃO AQUI */
+    font-size:28px !important;
+
+    font-weight:700 !important;
+    padding:0.5rem 0 !important;
+    box-shadow:none !important;
 }
 
 div[data-testid="stButton"] > button:hover {
-    color: #6b8e23 !important;
-    background: transparent !important;
+    color:#6b8e23 !important;
+    background:transparent !important;
 }
 
 .stButton button:focus{
