@@ -108,31 +108,36 @@ footer{
 
 </style>
 """, unsafe_allow_html=True)
-
 # ==================================================
 # HEADER
 # ==================================================
 
+import os
+
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
-    [4,1,1,1,1,1,1]
+    [4, 1, 1, 1, 1, 1, 1]
 )
 
 with col_logo:
+
     col_img, col_txt = st.columns([1, 4])
 
-    with col_img:
-        import os
-        logo_path = os.path.join(
-            os.path.dirname(__file__),
-            "assets",
-            "logo.png"
-        )
+    logo_path = os.path.join(
+        os.path.dirname(__file__),
+        "assets",
+        "logo.png"
+    )
 
-st.image(logo_path, width=60)
+    with col_img:
+        st.image(logo_path, width=60)
 
     with col_txt:
         st.markdown(
-            '<div class="logo">Capivaras Trek</div>',
+            """
+            <div class="logo">
+                Capivaras Trek
+            </div>
+            """,
             unsafe_allow_html=True
         )
 
@@ -153,11 +158,3 @@ with c5:
 
 with c6:
     st.button("Contato")
-
-# ==================================================
-# CONTEÚDO TEMPORÁRIO
-# ==================================================
-
-st.write("")
-st.write("")
-st.write("")
