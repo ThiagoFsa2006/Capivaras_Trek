@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from PIL import Image
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -165,14 +166,18 @@ if os.path.exists(banner_path):
 
     img = Image.open(banner_path)
 
-    # gira a foto
-    img = img.rotate(270, expand=True)
+    # gira para a esquerda
+    img = img.rotate(90, expand=True)
 
-    # transforma em banner horizontal
-    largura_desejada = 1600
-    altura_desejada = 450
+    largura, altura = img.size
 
-    img = img.resize((largura_desejada, altura_desejada))
+    # banner panorâmico
+    altura_banner = int(largura * 0.30)
+
+    top = (altura - altura_banner) // 2
+    bottom = top + altura_banner
+
+    img = img.crop((0, top, largura, bottom))
 
     st.image(
         img,
