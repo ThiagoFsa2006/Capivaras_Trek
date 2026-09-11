@@ -171,7 +171,7 @@ def get_image_base64(file_path):
 
 def render_hero_carousel():
     # Caminho da imagem local dentro de assets/
-    img_path = os.path.join(os.path.dirname(__file__), "assets", "banner.jpg")
+    img_path = os.path.join(os.path.dirname(__file__), "assets", "banner_home.jpg")
     img_bg = get_image_base64(img_path)
 
     # Se a imagem local não existir, usa uma imagem Unsplash de fallback
