@@ -119,10 +119,22 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 )
 
 with col_logo:
-    st.markdown(
-        '<div class="logo">🦫 Capivaras Trek</div>',
-        unsafe_allow_html=True
-    )
+    st.markdown("""
+    <div style="
+        display:flex;
+        align-items:center;
+        gap:15px;
+    ">
+        app/static/logo.png
+        <span style="
+            font-size:34px;
+            font-weight:800;
+            color:#244029;
+        ">
+            Capivaras Trek
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
 
 with c1:
     st.button("Home")
