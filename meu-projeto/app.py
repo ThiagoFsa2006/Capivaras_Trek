@@ -51,10 +51,11 @@ st.markdown("""
     </div>
 
     <div class="menu">
-        <a hrefa>
+        #Home</a>
         #Trilhas</a>
-        <a href="#">Acervo</aCalendário</a>
-        <alog</a>
+        #Acervo</a>
+        #Calendário</a>
+        #Blog</a>
         #Contato</a>
     </div>
 </div>
