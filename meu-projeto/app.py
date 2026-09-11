@@ -59,7 +59,7 @@ header[data-testid="stHeader"], div[data-testid="stHeader"] {
 <div class="header-container">
     <div class="logo-area">
         <h1>Capivaras Trek</h1>
-        <p>Explore a Natureza, Siga as Capivaras</p>
+        <p>Explore a Natureza, Siga os Capivaras</p>
     </div>
     <div class="menu">
         <a href="#home">Home</a>
