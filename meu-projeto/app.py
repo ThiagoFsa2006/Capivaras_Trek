@@ -101,7 +101,7 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 
 with col_logo:
 
-    col_img, col_txt = st.columns([1, 4])
+    col_img, col_txt = st.columns([0.35, 4])
 
     # Caminho absoluto da logo
     logo_path = os.path.join(
