@@ -70,12 +70,19 @@ footer{
 /* Botões */
 
 div[data-testid="stButton"] > button {
-    font-size:40px !important;
-    color:red !important;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    color: #244029 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 0 !important;
+    box-shadow: none !important;
 }
-.stButton button:hover{
-    color:#6b8e23;
-    transform:translateY(-2px);
+
+div[data-testid="stButton"] > button:hover {
+    color: #6b8e23 !important;
+    background: transparent !important;
 }
 
 .stButton button:focus{
