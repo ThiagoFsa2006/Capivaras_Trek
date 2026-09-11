@@ -1,4 +1,6 @@
 import streamlit as st
+from PIL import Image
+import os
 
 # ==================================================
 # CONFIGURAÇÃO DA PÁGINA
@@ -10,13 +12,13 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS GLOBAL
+# CSS
 # ==================================================
 
 st.markdown("""
 <style>
 
-/* Remove elementos do Streamlit */
+/* Remove elementos nativos do Streamlit */
 
 [data-testid="stHeader"]{
     display:none !important;
@@ -38,7 +40,7 @@ footer{
     visibility:hidden !important;
 }
 
-/* Espaçamento da página */
+/* Layout */
 
 .block-container{
     padding-top: 1rem !important;
@@ -47,13 +49,13 @@ footer{
     max-width: 100% !important;
 }
 
-/* Fundo original */
+/* Fundo */
 
 .stApp{
     background: linear-gradient(
         180deg,
         #97a97c 0%,
-        #FFFFFF 100%
+        #ffffff 100%
     );
 }
 
@@ -63,22 +65,32 @@ footer{
     font-size: 34px;
     font-weight: 800;
     color: #244029;
-    padding-top: 12px;
+    margin-top: 12px;
 }
 
-/* Botões do menu */
+/* Botões menu */
 
-.stButton button{
-    width: 100%;
+.stButton > button{
     background: transparent !important;
     border: none !important;
+    box-shadow: none !important;
+
     color: #244029 !important;
     font-weight: 700 !important;
-    box-shadow: none !important;
+
+    transition: all .3s ease;
 }
 
-.stButton button:hover{
+.stButton > button:hover{
     color: #6b8e23 !important;
+    transform: translateY(-2px);
+}
+
+/* Remove bordas ao clicar */
+
+.stButton > button:focus{
+    border: none !important;
+    box-shadow: none !important;
 }
 
 </style>
@@ -89,46 +101,61 @@ footer{
 # ==================================================
 
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
-    [4,1,1,1,1,1,1]
+    [4, 1, 1, 1, 1, 1, 1]
 )
 
 with col_logo:
 
-    img_col, text_col = st.columns([1, 4])
+    img_col, txt_col = st.columns([1, 5])
 
     with img_col:
-        st.image("logo.png", width=90)
 
-    with text_col:
+        if os.path.exists("logo.png"):
+            logo = Image.open("logo.png")
+            st.image(logo, width=85)
+        else:
+            st.markdown(
+                "<h1 style='margin-top:10px;'>🦫</h1>",
+                unsafe_allow_html=True
+            )
+
+    with txt_col:
         st.markdown(
-            '<div class="logo-titulo">Capivaras Trek</div>',
+            """
+            <div class="logo-titulo">
+                Capivaras Trek
+            </div>
+            """,
             unsafe_allow_html=True
         )
 
 with c1:
-    st.button("Home")
+    st.button("Home", use_container_width=True)
 
 with c2:
-    st.button("Trilhas")
+    st.button("Trilhas", use_container_width=True)
 
 with c3:
-    st.button("Acervo")
+    st.button("Acervo", use_container_width=True)
 
 with c4:
-    st.button("Calendário")
+    st.button("Calendário", use_container_width=True)
 
 with c5:
-    st.button("Blog")
+    st.button("Blog", use_container_width=True)
 
 with c6:
-    st.button("Contato")
+    st.button("Contato", use_container_width=True)
 
-st.divider()
+# ==================================================
+# ESPAÇAMENTO
+# ==================================================
+
+st.write("")
+st.write("")
 
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
 # ==================================================
 
-st.write("")
-st.write("")
-st.write("")
+st.empty()
