@@ -118,9 +118,9 @@ col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
 )
 
 with col_logo:
-    st.markdown(
-        '<div class="logo">🦫 Capivaras Trek</div>',
-        unsafe_allow_html=True
+    st.image(
+        "assets/logo.png",
+        width=250
     )
 
 with c1:
