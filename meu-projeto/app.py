@@ -113,8 +113,6 @@ footer{
 # HEADER
 # ==================================================
 
-st.markdown('<div class="header-box">', unsafe_allow_html=True)
-
 col_logo, c1, c2, c3, c4, c5, c6 = st.columns(
     [4,1,1,1,1,1,1]
 )
@@ -142,8 +140,6 @@ with c5:
 
 with c6:
     st.button("Contato")
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # ==================================================
 # CONTEÚDO TEMPORÁRIO
