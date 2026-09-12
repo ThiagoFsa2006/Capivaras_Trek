@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS GLOBAL REFINADO
+# CSS GLOBAL REFINADO (COM SUPORTE MOBILE)
 # ==================================================
 
 st.markdown("""
@@ -200,6 +200,55 @@ div[data-testid="stButton"] button:focus {
     padding-top: 20px;
 }
 
+/* ==================================================
+   REGRAS DE RESPONSIVIDADE (MOBILE)
+   ================================================== */
+
+@media (max-width: 768px) {
+    .block-container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .logo-text {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    div[data-testid="stButton"] button {
+        min-height: 45px !important;
+    }
+
+    div[data-testid="stButton"] button p,
+    div[data-testid="stButton"] button span {
+        font-size: 13px !important;
+    }
+
+    .about-card {
+        padding: 24px 16px;
+        margin: 30px 10px;
+        border-radius: 16px;
+    }
+
+    .about-title {
+        font-size: 24px;
+    }
+
+    .about-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-item {
+        padding: 16px;
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -264,7 +313,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO
+# CARROSSEL HERO (RESPONSIVO)
 # ==================================================
 
 def render_hero_carousel():
@@ -284,6 +333,7 @@ def render_hero_carousel():
     <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <style>
         * {{
@@ -315,17 +365,9 @@ def render_hero_carousel():
           color: #ffffff;
         }}
 
-        .slide-1 {{
-          background-position: center 40%;
-        }}
-
-        .slide-2 {{
-          background-position: center 40%;
-        }}
-
-        .slide-3 {{
-          background-position: center 65%;
-        }}
+        .slide-1 {{ background-position: center 40%; }}
+        .slide-2 {{ background-position: center 40%; }}
+        .slide-3 {{ background-position: center 65%; }}
 
         .swiper-slide::before {{
           content: "";
@@ -393,9 +435,29 @@ def render_hero_carousel():
           font-weight: bold;
         }}
 
-        .swiper-button-next:hover, .swiper-button-prev:hover {{
-          background: rgba(0, 0, 0, 0.55);
-          transform: scale(1.08);
+        /* AJUSTES EXCLUSIVOS PARA TELAS DE CELULAR */
+        @media (max-width: 768px) {{
+          .swiper {{
+            border-radius: 16px;
+          }}
+
+          .swiper-slide {{
+            height: 420px;
+          }}
+
+          .hero-title {{
+            font-size: 32px;
+            letter-spacing: 2px;
+          }}
+
+          .swiper-button-next, .swiper-button-prev {{
+            width: 36px;
+            height: 36px;
+          }}
+
+          .swiper-button-next:after, .swiper-button-prev:after {{
+            font-size: 14px !important;
+          }}
         }}
       </style>
     </head>
