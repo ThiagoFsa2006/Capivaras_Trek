@@ -19,14 +19,13 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-/* Importação de fonte profissional (Inter) */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
 html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
 }
 
-/* Oculta elementos padrão do Streamlit */
 [data-testid="stHeader"],
 [data-testid="stToolbar"],
 [data-testid="stDecoration"],
@@ -36,7 +35,6 @@ footer {
     visibility: hidden !important;
 }
 
-/* Zera padding superior para layout full-width */
 .block-container {
     padding-top: 0rem !important;
     padding-left: 1.5rem !important;
@@ -45,7 +43,6 @@ footer {
     max-width: 100% !important;
 }
 
-/* Fundo da aplicação */
 .stApp {
     background: linear-gradient(180deg, #8ba170 0%, #edf1e8 50%, #ffffff 100%);
 }
@@ -53,11 +50,6 @@ footer {
 /* ==================================================
    HEADER & NAVBAR
    ================================================== */
-.header-container {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-}
 
 .logo-text {
     font-size: 32px;
@@ -67,7 +59,6 @@ footer {
     line-height: 1;
 }
 
-/* Estilização dos Botões do Menu */
 div[data-testid="stButton"] button {
     width: 100% !important;
     background: transparent !important;
@@ -104,6 +95,7 @@ div[data-testid="stButton"] button:focus {
 /* ==================================================
    SEÇÃO QUEM SOMOS & STATS
    ================================================== */
+
 .about-card {
     max-width: 1100px;
     margin: 50px auto 30px auto;
@@ -142,7 +134,6 @@ div[data-testid="stButton"] button:focus {
     margin: 0 auto 18px auto;
 }
 
-/* Cards de Destaques/Estatísticas */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -180,6 +171,7 @@ div[data-testid="stButton"] button:focus {
 /* ==================================================
    FOOTER
    ================================================== */
+
 .footer-container {
     background-color: #1c3320;
     color: #e2e8df;
@@ -335,7 +327,6 @@ def render_hero_carousel():
           background-position: center 65%;
         }}
 
-        /* Overlay Gradiente Profissional */
         .swiper-slide::before {{
           content: "";
           position: absolute;
@@ -364,26 +355,8 @@ def render_hero_carousel():
           line-height: 1.15;
           color: #ffffff;
           text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
-          transition: transform 0.5s ease;
         }}
 
-        /* Animação suave para o texto ao mudar o slide */
-        .swiper-slide-active .hero-title {{
-          animation: fadeInUp 0.8s ease forwards;
-        }}
-
-        @keyframes fadeInUp {{
-          from {{
-            opacity: 0;
-            transform: translateY(20px);
-          }}
-          to {{
-            opacity: 1;
-            transform: translateY(0);
-          }}
-        }}
-
-        /* Paginação (Bolinhas) */
         .swiper-pagination {{
           position: relative !important;
           margin-top: 18px !important;
@@ -405,7 +378,6 @@ def render_hero_carousel():
           border-radius: 6px;
         }}
 
-        /* Setas de navegação */
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           background: rgba(0, 0, 0, 0.25);
@@ -502,7 +474,6 @@ st.markdown("""
         Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizade e aprendizado. Seja no desafio técnico de cumes imponentes ou na contemplação silenciosa de cachoeiras, nosso compromisso é viver a montanha respeitando a fauna, a flora e as comunidades locais.
     </p>
 
-    <!-- Cards de estatísticas/propósito -->
     <div class="stats-grid">
         <div class="stat-item">
             <div class="stat-icon">🧗‍♂️</div>
