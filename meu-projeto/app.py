@@ -269,7 +269,7 @@ def render_hero_carousel():
         }}
 
         .slide-3 {{
-          background-position: center 50%;
+          background-position: center 40%;
         }}
 
         .swiper-slide::before {{
