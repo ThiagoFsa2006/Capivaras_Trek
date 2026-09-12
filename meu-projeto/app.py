@@ -48,35 +48,54 @@ footer {
 }
 
 /* ==================================================
-   HEADER & NAVBAR
+   HEADER RESPONSIVO (DESKTOP E MOBILE)
    ================================================== */
 
-.logo-container {
+.custom-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    padding: 10px 0 15px 0;
+    width: 100%;
 }
 
-.logo-text {
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.brand-title {
     font-size: 26px;
     font-weight: 900;
     color: #1c3320;
     letter-spacing: -0.5px;
-    line-height: 1;
     white-space: nowrap;
 }
 
-/* Estilização dos Botões */
+/* Menu de navegação */
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 div[data-testid="stButton"] button {
     width: 100% !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    min-height: 45px !important;
+    min-height: 40px !important;
     border-bottom: 2px solid transparent !important;
     border-radius: 0px !important;
+    padding: 0 8px !important;
     transition: all 0.25s ease-in-out !important;
-    padding: 0 4px !important;
 }
 
 div[data-testid="stButton"] button p,
@@ -85,6 +104,7 @@ div[data-testid="stButton"] button span {
     font-weight: 700 !important;
     color: #1c3320 !important;
     letter-spacing: 0.2px !important;
+    white-space: nowrap !important;
 }
 
 div[data-testid="stButton"] button:hover {
@@ -96,14 +116,36 @@ div[data-testid="stButton"] button:hover p {
     color: #244029 !important;
 }
 
-/* Ajustes para telas menores (Mobile) */
+/* REGRA EXCLUSIVA PARA MOBILE */
 @media (max-width: 768px) {
-    .logo-text {
-        font-size: 20px;
+    .custom-header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .brand-box {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .brand-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-title {
+        font-size: 22px;
     }
 
     div[data-testid="stButton"] button {
-        min-height: 36px !important;
+        min-height: 32px !important;
+        padding: 0 4px !important;
     }
 
     div[data-testid="stButton"] button p,
@@ -174,7 +216,6 @@ div[data-testid="stButton"] button:hover p {
 .stat-number { font-size: 26px; font-weight: 800; color: #244029; }
 .stat-label { font-size: 14px; color: #666; font-weight: 600; margin-top: 4px; }
 
-/* Responsive para a Seção Quem Somos */
 @media (max-width: 768px) {
     .about-card {
         padding: 24px 16px;
@@ -207,36 +248,6 @@ div[data-testid="stButton"] button:hover p {
 """, unsafe_allow_html=True)
 
 # ==================================================
-# HEADER (Navegação Estável)
-# ==================================================
-
-# Estrutura de colunas proporcional para desktop e mobile
-c_logo, c1, c2, c3, c4, c5 = st.columns([3, 1, 1, 1, 1, 1])
-
-with c_logo:
-    logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
-    
-    col_img, col_txt = st.columns([0.35, 2])
-    with col_img:
-        if os.path.exists(logo_path):
-            st.image(logo_path, width=42)
-        else:
-            st.write("🏔️")
-    with col_txt:
-        st.markdown('<div class="logo-text" style="padding-top: 6px;">Capivaras Trek</div>', unsafe_allow_html=True)
-
-with c1:
-    st.button("Home")
-with c2:
-    st.button("Trilhas")
-with c3:
-    st.button("Acervo")
-with c4:
-    st.button("Calendário")
-with c5:
-    st.button("Contato")
-
-# ==================================================
 # HELPER BASE64
 # ==================================================
 
@@ -251,12 +262,39 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
+# HEADER (LOGO CENTRALIZADA NO MOBILE)
+# ==================================================
+
+assets_dir = os.path.join(os.path.dirname(__file__), "assets")
+logo_file = os.path.join(assets_dir, "logo.png")
+logo_b64 = get_image_base64(logo_file)
+
+logo_tag = f'<img src="{logo_b64}" class="brand-logo">' if logo_b64 else '<span>🏔️</span>'
+
+header_html = f"""
+<div class="custom-header">
+    <div class="brand-box">
+        {logo_tag}
+        <span class="brand-title">Capivaras Trek</span>
+    </div>
+</div>
+"""
+
+st.markdown(header_html, unsafe_allow_html=True)
+
+# Botões do Menu
+c1, c2, c3, c4, c5 = st.columns(5)
+with c1: st.button("Home")
+with c2: st.button("Trilhas")
+with c3: st.button("Acervo")
+with c4: st.button("Calendário")
+with c5: st.button("Contato")
+
+# ==================================================
 # CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
-    assets_dir = os.path.join(os.path.dirname(__file__), "assets")
-    
     img1 = get_image_base64(os.path.join(assets_dir, "banner_home.jpg"))
     img2 = get_image_base64(os.path.join(assets_dir, "banner_home1.jpg"))
     img3 = get_image_base64(os.path.join(assets_dir, "banner_home2.jpg"))
