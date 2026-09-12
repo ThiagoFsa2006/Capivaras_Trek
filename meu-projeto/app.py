@@ -528,8 +528,8 @@ Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizad
 <div class="stats-grid">
 <div class="stat-item">
 <div class="stat-icon">🧗‍♂️</div>
-<div class="stat-number">+50</div>
-<div class="stat-label">Cumes Conquistados</div>
+<div class="stat-number">+9</div>
+<div class="stat-label">Cumes Conquistados / "Adesivados" </div>
 </div>
 <div class="stat-item">
 <div class="stat-icon">🥾</div>
