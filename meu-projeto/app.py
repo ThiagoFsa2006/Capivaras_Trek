@@ -19,7 +19,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Remove elementos do Streamlit */
+/* Remove elementos padrão do Streamlit */
 [data-testid="stHeader"]{
     display:none !important;
 }
@@ -40,15 +40,16 @@ footer{
     visibility:hidden !important;
 }
 
-/* Remove espaço superior */
+/* Remove espaço superior e limita margens */
 .block-container{
     padding-top:0rem !important;
     padding-left:1rem !important;
     padding-right:1rem !important;
+    padding-bottom:0rem !important;
     max-width:100% !important;
 }
 
-/* Fundo */
+/* Fundo da aplicação */
 .stApp{
     background: linear-gradient(
         180deg,
@@ -97,6 +98,48 @@ div[data-testid="stButton"] button:hover *{
 div[data-testid="stButton"] button:focus{
     border:none !important;
     box-shadow:none !important;
+}
+
+/* ==================================================
+   ESTILOS QUEM SOMOS E RODAPÉ
+   ================================================== */
+
+.about-section {
+    max-width: 1000px;
+    margin: 60px auto 40px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.about-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #244029;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+.site-footer {
+    width: 100%;
+    background-color: #244029;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 60px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
 
 </style>
@@ -217,7 +260,6 @@ def render_hero_carousel():
           color: #ffffff;
         }}
 
-        /* Posicionamento customizado das imagens */
         .slide-1 {{
           background-position: center 40%;
         }}
@@ -321,7 +363,7 @@ def render_hero_carousel():
         var swiper = new Swiper(".mySwiper", {{
           loop: true,
           autoplay: {{
-            delay: 6000, /* 7 segundos de duração por slide */
+            delay: 6000,
             disableOnInteraction: false,
           }},
           pagination: {{
@@ -342,9 +384,27 @@ def render_hero_carousel():
 render_hero_carousel()
 
 # ==================================================
-# CONTEÚDO TEMPORÁRIO
+# SEÇÃO: QUEM SOMOS
 # ==================================================
 
-st.write("")
-st.write("")
-st.write("")
+st.markdown("""
+<div class="about-section">
+    <div class="about-title">Quem Somos</div>
+    <p class="about-text">
+        O <strong>Capivaras Trek</strong> nasceu da paixão pelas montanhas, pelas matas e pela liberdade que só a natureza proporciona. Somos um grupo de entusiastas do trekking e do montanhismo dedicados a explorar novas trilhas, superar limites e promover o turismo sustentável e consciente.
+    </p>
+    <p class="about-text">
+        Acreditamos que cada caminhada é uma oportunidade única de conexão com a terra, renovação de energias e fortalecimento de amizades. Seja subindo cumes desafiadores ou contemplando cachoeiras escondidas, nosso objetivo é incentivar a prática segura de atividades ao ar livre, respeitando a fauna, a flora e as comunidades locais.
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+# ==================================================
+# RODAPÉ (FOOTER)
+# ==================================================
+
+st.markdown("""
+<div class="site-footer">
+    © 2026 Capivaras Trek — Todos os direitos reservados.
+</div>
+""", unsafe_allow_html=True)
