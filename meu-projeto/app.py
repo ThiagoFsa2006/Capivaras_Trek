@@ -216,15 +216,10 @@ div[data-testid="stButton"] button:focus {
         font-size: 12px !important;
     }
 
-    /* Reduz a altura do container do Iframe do carrossel no mobile */
-    iframe[title="streamlit.components.v1.html"] {
-        height: 440px !important;
-    }
-
-    /* Puxa a seção Quem Somos para cima no mobile */
+    /* Reduz o espaço apenas no celular */
     .about-card {
         padding: 24px 16px;
-        margin: -10px 0px 20px 0px !important;
+        margin: 10px 0px 20px 0px !important;
         border-radius: 16px;
     }
     
@@ -301,7 +296,7 @@ with col_header_right:
     with c5: st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO
+# CARROSSEL HERO (RESPONSIVO REAL)
 # ==================================================
 
 def render_hero_carousel():
@@ -421,6 +416,7 @@ def render_hero_carousel():
           font-weight: bold;
         }}
 
+        /* AJUSTES DE ALTURA EXCLUSIVOS DO MOBILE VIA MEDIA QUERY */
         @media (max-width: 768px) {{
           body {{
             padding: 0;
@@ -506,7 +502,7 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    # Altura mantida completa para Desktop
+    # Altura suficiente para o desktop não cortar a imagem/paginação
     components.html(carousel_html, height=580)
 
 render_hero_carousel()
