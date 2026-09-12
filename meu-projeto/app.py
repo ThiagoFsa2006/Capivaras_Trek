@@ -209,7 +209,7 @@ def render_hero_carousel():
 
         .swiper-slide {{
           position: relative;
-          height: 480px;
+          height: 600px;
           background-size: cover;
           background-position: center;
           display: flex;
