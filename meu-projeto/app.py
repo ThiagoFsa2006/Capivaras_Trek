@@ -166,18 +166,16 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO (COM OS NOVOS TÍTULOS)
+# CARROSSEL HERO (COM POSICIONAMENTO DA IMAGEM)
 # ==================================================
 
 def render_hero_carousel():
     assets_dir = os.path.join(os.path.dirname(__file__), "assets")
     
-    # Carrega as 3 imagens da pasta assets
     img1 = get_image_base64(os.path.join(assets_dir, "banner_home.jpg"))
     img2 = get_image_base64(os.path.join(assets_dir, "banner_home1.jpg"))
     img3 = get_image_base64(os.path.join(assets_dir, "banner_home2.jpg"))
 
-    # Fallback caso a imagem não exista no caminho especificado
     fallback = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600"
     img1 = img1 if img1 else fallback
     img2 = img2 if img2 else fallback
@@ -213,14 +211,27 @@ def render_hero_carousel():
           position: relative;
           height: 480px;
           background-size: cover;
-          background-position: 60%;
+          background-position: center;
           display: flex;
           justify-content: center;
           align-items: center;
           color: #ffffff;
         }}
 
-        /* Overlay escuro leve para leitura do texto */
+        /* Regras customizadas de enquadramento para cada slide */
+        .slide-1 {{
+          /* Ajuste aqui a porcentagem vertical (0% = topo, 50% = centro, 100% = base) */
+          background-position: center 30%;
+        }}
+
+        .slide-2 {{
+          background-position: center 50%;
+        }}
+
+        .slide-3 {{
+          background-position: center 40%;
+        }}
+
         .swiper-slide::before {{
           content: "";
           position: absolute;
@@ -246,7 +257,6 @@ def render_hero_carousel():
           text-shadow: 0 4px 12px rgba(0,0,0,0.6);
         }}
 
-        /* Paginação (Bolinhas) */
         .swiper-pagination {{
           position: relative !important;
           margin-top: 15px !important;
@@ -267,7 +277,6 @@ def render_hero_carousel():
           height: 14px;
         }}
 
-        /* Setas de navegação */
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           transform: scale(0.6);
@@ -280,22 +289,22 @@ def render_hero_carousel():
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
-          <!-- SLIDE 1 (banner_home.jpg) -->
-          <div class="swiper-slide" style="background-image: url('{img1}');">
+          <!-- SLIDE 1 -->
+          <div class="swiper-slide slide-1" style="background-image: url('{img1}');">
             <div class="hero-title-container">
               <h1 class="hero-title">CUME DO TAIPABUÇU</h1>
             </div>
           </div>
 
-          <!-- SLIDE 2 (banner_home1.jpg) -->
-          <div class="swiper-slide" style="background-image: url('{img2}');">
+          <!-- SLIDE 2 -->
+          <div class="swiper-slide slide-2" style="background-image: url('{img2}');">
             <div class="hero-title-container">
               <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
             </div>
           </div>
 
-          <!-- SLIDE 3 (banner_home2.jpg) -->
-          <div class="swiper-slide" style="background-image: url('{img3}');">
+          <!-- SLIDE 3 -->
+          <div class="swiper-slide slide-3" style="background-image: url('{img3}');">
             <div class="hero-title-container">
               <h1 class="hero-title">CUME DO ANHANGAVA</h1>
             </div>
