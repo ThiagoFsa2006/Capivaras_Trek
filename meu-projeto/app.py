@@ -463,47 +463,50 @@ render_hero_carousel()
 # SEÇÃO: QUEM SOMOS
 # ==================================================
 
-st.markdown("""
+about_html = """
 <div class="about-card">
-    <div class="about-title">Quem Somos</div>
-    <div class="about-subtitle-line"></div>
-    <p class="about-text">
-        O <strong>Capivaras Trek</strong> nasceu da paixão visceral pelas montanhas, pelas matas preservadas e pela liberdade incomparável que só a caminhada ao ar livre proporciona. Somos um grupo de praticantes de trekking e montanhismo dedicados a desbravar novas rotas, superar limites com segurança e promover o ecoturismo consciente.
-    </p>
-    <p class="about-text">
-        Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizade e aprendizado. Seja no desafio técnico de cumes imponentes ou na contemplação silenciosa de cachoeiras, nosso compromisso é viver a montanha respeitando a fauna, a flora e as comunidades locais.
-    </p>
-
-    <div class="stats-grid">
-        <div class="stat-item">
-            <div class="stat-icon">🧗‍♂️</div>
-            <div class="stat-number">+50</div>
-            <div class="stat-label">Cumes Conquistados</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-icon">🥾</div>
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Espírito de Equipe</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-icon">🌿</div>
-            <div class="stat-number">Mínimo Impacto</div>
-            <div class="stat-label">Turismo Consciente</div>
-        </div>
-    </div>
+<div class="about-title">Quem Somos</div>
+<div class="about-subtitle-line"></div>
+<p class="about-text">
+O <strong>Capivaras Trek</strong> nasceu da paixão visceral pelas montanhas, pelas matas preservadas e pela liberdade incomparável que só a caminhada ao ar livre proporciona. Somos um grupo de praticantes de trekking e montanhismo dedicados a desbravar novas rotas, superar limites com segurança e promover o ecoturismo consciente.
+</p>
+<p class="about-text">
+Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizade e aprendizado. Seja no desafio técnico de cumes imponentes ou na contemplação silenciosa de cachoeiras, nosso compromisso é viver a montanha respeitando a fauna, a flora e as comunidades locais.
+</p>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-icon">🧗‍♂️</div>
+<div class="stat-number">+50</div>
+<div class="stat-label">Cumes Conquistados</div>
 </div>
-""", unsafe_allow_html=True)
+<div class="stat-item">
+<div class="stat-icon">🥾</div>
+<div class="stat-number">100%</div>
+<div class="stat-label">Espírito de Equipe</div>
+</div>
+<div class="stat-item">
+<div class="stat-icon">🌿</div>
+<div class="stat-number">Mínimo Impacto</div>
+<div class="stat-label">Turismo Consciente</div>
+</div>
+</div>
+</div>
+"""
+
+st.markdown(about_html, unsafe_allow_html=True)
 
 # ==================================================
 # RODAPÉ (FOOTER)
 # ==================================================
 
-st.markdown("""
+footer_html = """
 <div class="footer-container">
-    <div class="footer-brand">CAPIVARAS TREK</div>
-    <div class="footer-text">Explorando a montanha com respeito, consciência e paixão.</div>
-    <div class="footer-copy">
-        © 2026 Capivaras Trek — Todos os direitos reservados.
-    </div>
+<div class="footer-brand">CAPIVARAS TREK</div>
+<div class="footer-text">Explorando a montanha com respeito, consciência e paixão.</div>
+<div class="footer-copy">
+© 2026 Capivaras Trek — Todos os direitos reservados.
 </div>
-""", unsafe_allow_html=True)
+</div>
+"""
+
+st.markdown(footer_html, unsafe_allow_html=True)
