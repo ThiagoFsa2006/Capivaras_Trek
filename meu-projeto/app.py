@@ -166,17 +166,22 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO
+# CARROSSEL HERO (3 BANNERS)
 # ==================================================
 
 def render_hero_carousel():
-    # Caminho da imagem local dentro de assets/
-    img_path = os.path.join(os.path.dirname(__file__), "assets", "banner_home.jpg")
-    img_bg = get_image_base64(img_path)
+    assets_dir = os.path.join(os.path.dirname(__file__), "assets")
+    
+    # Carrega as 3 imagens da pasta assets
+    img1 = get_image_base64(os.path.join(assets_dir, "banner_home.jpg"))
+    img2 = get_image_base64(os.path.join(assets_dir, "banner_home1.jpg"))
+    img3 = get_image_base64(os.path.join(assets_dir, "banner_home2.jpg"))
 
-    # Se a imagem local não existir, usa uma imagem Unsplash de fallback
-    if not img_bg:
-        img_bg = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600"
+    # Fallbacks de segurança caso alguma imagem não seja encontrada no disco
+    fallback = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600"
+    img1 = img1 if img1 else fallback
+    img2 = img2 if img2 else fallback
+    img3 = img3 if img3 else fallback
 
     carousel_html = f"""
     <!DOCTYPE html>
@@ -215,6 +220,7 @@ def render_hero_carousel():
           color: #ffffff;
         }}
 
+        /* Overlay escuro leve para leitura do texto */
         .swiper-slide::before {{
           content: "";
           position: absolute;
@@ -240,6 +246,7 @@ def render_hero_carousel():
           text-shadow: 0 4px 12px rgba(0,0,0,0.6);
         }}
 
+        /* Paginação (Bolinhas) */
         .swiper-pagination {{
           position: relative !important;
           margin-top: 15px !important;
@@ -260,6 +267,7 @@ def render_hero_carousel():
           height: 14px;
         }}
 
+        /* Setas de navegação */
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           transform: scale(0.6);
@@ -272,17 +280,24 @@ def render_hero_carousel():
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
-          <!-- SLIDE 1 -->
-          <div class="swiper-slide" style="background-image: url('{img_bg}');">
+          <!-- SLIDE 1 (banner_home.jpg) -->
+          <div class="swiper-slide" style="background-image: url('{img1}');">
             <div class="hero-title-container">
               <h1 class="hero-title">TRAVESSIA DA<br>SERRA DO MAR</h1>
             </div>
           </div>
 
-          <!-- SLIDE 2 -->
-          <div class="swiper-slide" style="background-image: url('{img_bg}');">
+          <!-- SLIDE 2 (banner_home1.jpg) -->
+          <div class="swiper-slide" style="background-image: url('{img2}');">
             <div class="hero-title-container">
               <h1 class="hero-title">ACAMPAMENTO<br>DE ANO NOVO</h1>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 (banner_home2.jpg) -->
+          <div class="swiper-slide" style="background-image: url('{img3}');">
+            <div class="hero-title-container">
+              <h1 class="hero-title">EXPEDIÇÃO<br>CAPIVARAS TREK</h1>
             </div>
           </div>
 
