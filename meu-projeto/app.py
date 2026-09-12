@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # ==================================================
-# CSS GLOBAL REFINADO (COM SUPORTE MOBILE)
+# CSS GLOBAL REFINADO & RESPONSIVO
 # ==================================================
 
 st.markdown("""
@@ -36,7 +36,7 @@ footer {
 }
 
 .block-container {
-    padding-top: 0rem !important;
+    padding-top: 0.5rem !important;
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
     padding-bottom: 0rem !important;
@@ -52,7 +52,7 @@ footer {
    ================================================== */
 
 .logo-text {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 900;
     color: #1c3320;
     letter-spacing: -0.5px;
@@ -64,10 +64,11 @@ div[data-testid="stButton"] button {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    min-height: 70px !important;
+    min-height: 50px !important;
     border-bottom: 3px solid transparent !important;
     border-radius: 0px !important;
     transition: all 0.25s ease-in-out !important;
+    padding: 0 5px !important;
 }
 
 div[data-testid="stButton"] button p,
@@ -76,6 +77,7 @@ div[data-testid="stButton"] button span {
     font-weight: 700 !important;
     color: #1c3320 !important;
     letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
 }
 
 div[data-testid="stButton"] button:hover {
@@ -206,17 +208,34 @@ div[data-testid="stButton"] button:focus {
 
 @media (max-width: 768px) {
     .block-container {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    /* Força as colunas do menu a ficarem lado a lado na mesma linha no celular */
+    [data-testid="stHorizontalBlock"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        align-items: center !important;
+        padding-bottom: 5px !important;
+    }
+
+    [data-testid="column"] {
+        width: auto !important;
+        min-width: fit-content !important;
+        flex: 0 0 auto !important;
     }
 
     .logo-text {
-        font-size: 24px;
-        text-align: center;
+        font-size: 20px;
+        white-space: nowrap;
     }
 
     div[data-testid="stButton"] button {
-        min-height: 45px !important;
+        min-height: 40px !important;
+        padding: 0 8px !important;
     }
 
     div[data-testid="stButton"] button p,
@@ -226,16 +245,16 @@ div[data-testid="stButton"] button:focus {
 
     .about-card {
         padding: 24px 16px;
-        margin: 30px 10px;
+        margin: 30px 0px;
         border-radius: 16px;
     }
 
     .about-title {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .about-text {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.6;
     }
 
@@ -253,13 +272,13 @@ div[data-testid="stButton"] button:focus {
 """, unsafe_allow_html=True)
 
 # ==================================================
-# HEADER (Navegação)
+# HEADER (Navegação Ajustada para Mobile)
 # ==================================================
 
-col_logo, c1, c2, c3, c4, c5 = st.columns([3.5, 1, 1, 1, 1, 1])
+c_logo, c1, c2, c3, c4, c5 = st.columns([2.5, 1, 1, 1, 1, 1])
 
-with col_logo:
-    col_img, col_txt = st.columns([0.5, 4])
+with c_logo:
+    col_img, col_txt = st.columns([0.3, 2])
 
     logo_path = os.path.join(
         os.path.dirname(__file__),
@@ -269,14 +288,14 @@ with col_logo:
 
     with col_img:
         if os.path.exists(logo_path):
-            st.image(logo_path, width=70)
+            st.image(logo_path, width=45)
         else:
             st.write("🏔️")
 
     with col_txt:
         st.markdown(
             """
-            <div style="padding-top: 14px;">
+            <div style="padding-top: 8px;">
                 <div class="logo-text">Capivaras Trek</div>
             </div>
             """,
@@ -313,7 +332,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO (RESPONSIVO)
+# CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
@@ -345,7 +364,7 @@ def render_hero_carousel():
 
         body {{
           background: transparent;
-          padding: 10px 0;
+          padding: 5px 0;
         }}
 
         .swiper {{
@@ -357,7 +376,7 @@ def render_hero_carousel():
 
         .swiper-slide {{
           position: relative;
-          height: 600px;
+          height: 550px;
           background-size: cover;
           display: flex;
           justify-content: center;
@@ -390,7 +409,7 @@ def render_hero_carousel():
         }}
 
         .hero-title {{
-          font-size: 56px;
+          font-size: 52px;
           font-weight: 900;
           letter-spacing: 4px;
           text-transform: uppercase;
@@ -401,13 +420,13 @@ def render_hero_carousel():
 
         .swiper-pagination {{
           position: relative !important;
-          margin-top: 18px !important;
+          margin-top: 15px !important;
           bottom: 0 !important;
         }}
 
         .swiper-pagination-bullet {{
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           background: #1c3320;
           opacity: 0.35;
           transition: all 0.3s ease;
@@ -416,47 +435,46 @@ def render_hero_carousel():
         .swiper-pagination-bullet-active {{
           background: #1c3320 !important;
           opacity: 1;
-          width: 28px;
+          width: 24px;
           border-radius: 6px;
         }}
 
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           background: rgba(0, 0, 0, 0.25);
-          width: 48px;
-          height: 48px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
           backdrop-filter: blur(4px);
           transition: all 0.2s ease;
         }}
 
         .swiper-button-next:after, .swiper-button-prev:after {{
-          font-size: 20px !important;
+          font-size: 18px !important;
           font-weight: bold;
         }}
 
-        /* AJUSTES EXCLUSIVOS PARA TELAS DE CELULAR */
         @media (max-width: 768px) {{
           .swiper {{
             border-radius: 16px;
           }}
 
           .swiper-slide {{
-            height: 420px;
+            height: 380px;
           }}
 
           .hero-title {{
-            font-size: 32px;
+            font-size: 28px;
             letter-spacing: 2px;
           }}
 
           .swiper-button-next, .swiper-button-prev {{
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
           }}
 
           .swiper-button-next:after, .swiper-button-prev:after {{
-            font-size: 14px !important;
+            font-size: 12px !important;
           }}
         }}
       </style>
@@ -517,7 +535,7 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    components.html(carousel_html, height=660)
+    components.html(carousel_html, height=600)
 
 render_hero_carousel()
 
