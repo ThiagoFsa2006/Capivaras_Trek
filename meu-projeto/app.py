@@ -170,6 +170,18 @@ div[data-testid="stButton"] button:focus {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     border: 1px solid #eef2eb;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.stat-item-link:hover .stat-item {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .stat-icon { font-size: 28px; margin-bottom: 8px; }
@@ -216,7 +228,6 @@ div[data-testid="stButton"] button:focus {
         font-size: 12px !important;
     }
 
-    /* Ajusta a altura do container do carrossel apenas no celular */
     iframe[title="streamlit.components.v1.html"] {
         height: 440px !important;
     }
@@ -300,7 +311,7 @@ with col_header_right:
     with c5: st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO (AUMENTADO NO DESKTOP)
+# CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
@@ -420,7 +431,6 @@ def render_hero_carousel():
           font-weight: bold;
         }}
 
-        /* MOBILE MEDIA QUERY */
         @media (max-width: 768px) {{
           body {{
             padding: 0;
@@ -458,21 +468,21 @@ def render_hero_carousel():
           <!-- SLIDE 1 -->
           <div class="swiper-slide slide-1" style="background-image: url('{img1}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO TAIPABUÇU</h1>
+              <h1 class="hero-title">CUME<br>DO<br>TAIPABUÇU</h1>
             </div>
           </div>
 
           <!-- SLIDE 2 -->
           <div class="swiper-slide slide-2" style="background-image: url('{img2}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
+              <h1 class="hero-title">CACHOEIRA<br>DA<br>LAPINHA</h1>
             </div>
           </div>
 
           <!-- SLIDE 3 -->
           <div class="swiper-slide slide-3" style="background-image: url('{img3}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO ANHANGAVA</h1>
+              <h1 class="hero-title">CUME<br>DO<br>ANHANGAVA</h1>
             </div>
           </div>
 
@@ -506,16 +516,19 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    # Altura do iframe ajustada para 660px no Desktop
     components.html(carousel_html, height=660)
 
 render_hero_carousel()
 
 # ==================================================
-# SEÇÃO: QUEM SOMOS
+# SEÇÃO: QUEM SOMOS (COM CARD INSTAGRAM)
 # ==================================================
 
-about_html = """
+# Substitua '1.2k' ou '1200' pelo seu número real de seguidores
+SEGUIDORES_INSTAGRAM = "1.2k+" 
+LINK_INSTAGRAM = "https://www.instagram.com/capivarastrek/" # Coloque o link exato do seu perfil
+
+about_html = f"""
 <div class="about-card">
 <div class="about-title">Quem Somos</div>
 <div class="about-subtitle-line"></div>
@@ -528,14 +541,16 @@ Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizad
 <div class="stats-grid">
 <div class="stat-item">
 <div class="stat-icon">🧗‍♂️</div>
-<div class="stat-number">+9</div>
-<div class="stat-label">Cumes "Adesivados" </div>
+<div class="stat-number">+50</div>
+<div class="stat-label">Cumes Conquistados</div>
 </div>
+<a href="{LINK_INSTAGRAM}" target="_blank" class="stat-item-link">
 <div class="stat-item">
-<div class="stat-icon">🥾</div>
-<div class="stat-number">100%</div>
-<div class="stat-label">Espírito de Equipe</div>
+<div class="stat-icon">📸</div>
+<div class="stat-number">{SEGUIDORES_INSTAGRAM}</div>
+<div class="stat-label">Seguidores no Insta</div>
 </div>
+</a>
 <div class="stat-item">
 <div class="stat-icon">🌿</div>
 <div class="stat-number">Mínimo Impacto</div>
