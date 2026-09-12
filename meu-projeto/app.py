@@ -166,7 +166,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO (COM POSICIONAMENTO DA IMAGEM)
+# CARROSSEL HERO
 # ==================================================
 
 def render_hero_carousel():
@@ -211,16 +211,14 @@ def render_hero_carousel():
           position: relative;
           height: 600px;
           background-size: cover;
-          background-position: center;
           display: flex;
           justify-content: center;
           align-items: center;
           color: #ffffff;
         }}
 
-        /* Regras customizadas de enquadramento para cada slide */
+        /* Posicionamento customizado das imagens */
         .slide-1 {{
-          /* Ajuste aqui a porcentagem vertical (0% = topo, 50% = centro, 100% = base) */
           background-position: center 40%;
         }}
 
@@ -229,7 +227,7 @@ def render_hero_carousel():
         }}
 
         .slide-3 {{
-          background-position: center 35%;
+          background-position: center 50%;
         }}
 
         .swiper-slide::before {{
@@ -339,7 +337,7 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    components.html(carousel_html, height=540)
+    components.html(carousel_html, height=660)
 
 render_hero_carousel()
 
