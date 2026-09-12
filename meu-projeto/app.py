@@ -8,154 +8,217 @@ import base64
 # ==================================================
 
 st.set_page_config(
-    page_title="Capivaras Trek",
+    page_title="Capivaras Trek — Montanhismo & Aventuras",
+    page_icon="🏔️",
     layout="wide"
 )
 
 # ==================================================
-# CSS GLOBAL
+# CSS GLOBAL REFINADO
 # ==================================================
 
 st.markdown("""
 <style>
+/* Importação de fonte profissional (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
-/* Remove elementos padrão do Streamlit */
-[data-testid="stHeader"]{
-    display:none !important;
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
 }
 
-[data-testid="stToolbar"]{
-    display:none !important;
+/* Oculta elementos padrão do Streamlit */
+[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+#MainMenu,
+footer {
+    display: none !important;
+    visibility: hidden !important;
 }
 
-[data-testid="stDecoration"]{
-    display:none !important;
-}
-
-#MainMenu{
-    visibility:hidden !important;
-}
-
-footer{
-    visibility:hidden !important;
-}
-
-/* Remove espaço superior e limita margens */
-.block-container{
-    padding-top:0rem !important;
-    padding-left:1rem !important;
-    padding-right:1rem !important;
-    padding-bottom:0rem !important;
-    max-width:100% !important;
+/* Zera padding superior para layout full-width */
+.block-container {
+    padding-top: 0rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-bottom: 0rem !important;
+    max-width: 100% !important;
 }
 
 /* Fundo da aplicação */
-.stApp{
-    background: linear-gradient(
-        180deg,
-        #97a97c 0%,
-        #FFFFFF 100%
-    );
-}
-
-/* Logo */
-.logo{
-    font-size:36px;
-    font-weight:800;
-    color:#244029;
-    padding-top:10px;
+.stApp {
+    background: linear-gradient(180deg, #8ba170 0%, #edf1e8 50%, #ffffff 100%);
 }
 
 /* ==================================================
-   BOTÕES MENU
+   HEADER & NAVBAR
    ================================================== */
-
-div[data-testid="stButton"] button{
-    width:100% !important;
-    background:transparent !important;
-    border:none !important;
-    box-shadow:none !important;
-    min-height:80px !important;
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
 }
 
-div[data-testid="stButton"] button,
-div[data-testid="stButton"] button *,
-div[data-testid="stButton"] button span,
-div[data-testid="stButton"] button p{
-    font-size:14px !important;
-    font-weight:700 !important;
-    color:#244029 !important;
+.logo-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1c3320;
+    letter-spacing: -0.5px;
+    line-height: 1;
 }
 
-div[data-testid="stButton"] button:hover{
-    background:transparent !important;
+/* Estilização dos Botões do Menu */
+div[data-testid="stButton"] button {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-height: 70px !important;
+    border-bottom: 3px solid transparent !important;
+    border-radius: 0px !important;
+    transition: all 0.25s ease-in-out !important;
 }
 
-div[data-testid="stButton"] button:hover *{
-    color:#6b8e23 !important;
+div[data-testid="stButton"] button p,
+div[data-testid="stButton"] button span {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1c3320 !important;
+    letter-spacing: 0.3px !important;
 }
 
-div[data-testid="stButton"] button:focus{
-    border:none !important;
-    box-shadow:none !important;
+div[data-testid="stButton"] button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 3px solid #244029 !important;
+}
+
+div[data-testid="stButton"] button:hover p {
+    color: #244029 !important;
+}
+
+div[data-testid="stButton"] button:focus {
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* ==================================================
-   ESTILOS QUEM SOMOS E RODAPÉ
+   SEÇÃO QUEM SOMOS & STATS
    ================================================== */
-
-.about-section {
-    max-width: 1000px;
-    margin: 60px auto 40px auto;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.65);
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    text-align: center;
+.about-card {
+    max-width: 1100px;
+    margin: 50px auto 30px auto;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .about-title {
     font-size: 32px;
-    font-weight: 800;
-    color: #244029;
+    font-weight: 900;
+    color: #1c3320;
+    text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+}
+
+.about-subtitle-line {
+    width: 60px;
+    height: 4px;
+    background-color: #557242;
+    margin: -10px auto 30px auto;
+    border-radius: 2px;
 }
 
 .about-text {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #333333;
-    margin-bottom: 16px;
+    font-size: 17px;
+    line-height: 1.85;
+    color: #38423b;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 18px auto;
 }
 
-.site-footer {
-    width: 100%;
-    background-color: #244029;
-    color: #ffffff;
+/* Cards de Destaques/Estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 16px;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #eef2eb;
+}
+
+.stat-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-size: 26px;
+    font-weight: 800;
+    color: #244029;
+}
+
+.stat-label {
     font-size: 14px;
-    letter-spacing: 0.5px;
+    color: #666;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+.footer-container {
+    background-color: #1c3320;
+    color: #e2e8df;
+    padding: 40px 20px 25px 20px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.footer-brand {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #a3b59b;
+    margin-bottom: 20px;
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: #788a71;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
 # ==================================================
-# HEADER
+# HEADER (Navegação)
 # ==================================================
 
-col_logo, c1, c2, c3, c4, c5 = st.columns(
-    [4, 1, 1, 1, 1, 1]
-)
+col_logo, c1, c2, c3, c4, c5 = st.columns([3.5, 1, 1, 1, 1, 1])
 
 with col_logo:
-
-    col_img, col_txt = st.columns([0.65, 4])
+    col_img, col_txt = st.columns([0.5, 4])
 
     logo_path = os.path.join(
         os.path.dirname(__file__),
@@ -165,15 +228,15 @@ with col_logo:
 
     with col_img:
         if os.path.exists(logo_path):
-            st.image(logo_path, width=80)
+            st.image(logo_path, width=70)
         else:
-            st.error(f"Logo não encontrada: {logo_path}")
+            st.write("🏔️")
 
     with col_txt:
         st.markdown(
             """
-            <div class="logo">
-                Capivaras Trek
+            <div style="padding-top: 12px;">
+                <div class="logo-text">Capivaras Trek</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -195,7 +258,7 @@ with c5:
     st.button("Contato")
 
 # ==================================================
-# HELPER PARA CARREGAR IMAGEM LOCAL EM BASE64
+# HELPER BASE64
 # ==================================================
 
 def get_image_base64(file_path):
@@ -245,9 +308,9 @@ def render_hero_carousel():
 
         .swiper {{
           width: 100%;
-          border-radius: 24px;
+          border-radius: 28px;
           overflow: hidden;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.18);
         }}
 
         .swiper-slide {{
@@ -272,11 +335,17 @@ def render_hero_carousel():
           background-position: center 65%;
         }}
 
+        /* Overlay Gradiente Profissional */
         .swiper-slide::before {{
           content: "";
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.35);
+          background: linear-gradient(
+            180deg, 
+            rgba(0, 0, 0, 0.25) 0%, 
+            rgba(0, 0, 0, 0.45) 50%, 
+            rgba(0, 0, 0, 0.6) 100%
+          );
           z-index: 1;
         }}
 
@@ -288,39 +357,73 @@ def render_hero_carousel():
         }}
 
         .hero-title {{
-          font-size: 52px;
+          font-size: 56px;
           font-weight: 900;
-          letter-spacing: 3px;
+          letter-spacing: 4px;
           text-transform: uppercase;
           line-height: 1.15;
           color: #ffffff;
-          text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+          text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+          transition: transform 0.5s ease;
         }}
 
+        /* Animação suave para o texto ao mudar o slide */
+        .swiper-slide-active .hero-title {{
+          animation: fadeInUp 0.8s ease forwards;
+        }}
+
+        @keyframes fadeInUp {{
+          from {{
+            opacity: 0;
+            transform: translateY(20px);
+          }}
+          to {{
+            opacity: 1;
+            transform: translateY(0);
+          }}
+        }}
+
+        /* Paginação (Bolinhas) */
         .swiper-pagination {{
           position: relative !important;
-          margin-top: 15px !important;
+          margin-top: 18px !important;
           bottom: 0 !important;
         }}
 
         .swiper-pagination-bullet {{
           width: 12px;
           height: 12px;
-          background: #244029;
-          opacity: 0.4;
+          background: #1c3320;
+          opacity: 0.35;
+          transition: all 0.3s ease;
         }}
 
         .swiper-pagination-bullet-active {{
-          background: #244029 !important;
+          background: #1c3320 !important;
           opacity: 1;
-          width: 14px;
-          height: 14px;
+          width: 28px;
+          border-radius: 6px;
         }}
 
+        /* Setas de navegação */
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
-          transform: scale(0.6);
-          z-index: 10;
+          background: rgba(0, 0, 0, 0.25);
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          backdrop-filter: blur(4px);
+          transition: all 0.2s ease;
+        }}
+
+        .swiper-button-next:after, .swiper-button-prev:after {{
+          font-size: 20px !important;
+          font-weight: bold;
+        }}
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {{
+          background: rgba(0, 0, 0, 0.55);
+          transform: scale(1.08);
         }}
       </style>
     </head>
@@ -332,21 +435,21 @@ def render_hero_carousel():
           <!-- SLIDE 1 -->
           <div class="swiper-slide slide-1" style="background-image: url('{img1}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO TAIPABUÇO</h1>
+              <h1 class="hero-title">CUME<br>DO<br>TAIPABUÇU</h1>
             </div>
           </div>
 
           <!-- SLIDE 2 -->
           <div class="swiper-slide slide-2" style="background-image: url('{img2}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
+              <h1 class="hero-title">CACHOEIRA<br>DA<br>LAPINHA</h1>
             </div>
           </div>
 
           <!-- SLIDE 3 -->
           <div class="swiper-slide slide-3" style="background-image: url('{img3}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO ANHANGAVA</h1>
+              <h1 class="hero-title">CUME<br>DO<br>ANHANGAVA</h1>
             </div>
           </div>
 
@@ -362,8 +465,9 @@ def render_hero_carousel():
       <script>
         var swiper = new Swiper(".mySwiper", {{
           loop: true,
+          speed: 800,
           autoplay: {{
-            delay: 6000,
+            delay: 6500,
             disableOnInteraction: false,
           }},
           pagination: {{
@@ -388,14 +492,34 @@ render_hero_carousel()
 # ==================================================
 
 st.markdown("""
-<div class="about-section">
+<div class="about-card">
     <div class="about-title">Quem Somos</div>
+    <div class="about-subtitle-line"></div>
     <p class="about-text">
-        O <strong>Capivaras Trek</strong> nasceu da paixão pelas montanhas, pelas matas e pela liberdade que só a natureza proporciona. Somos um grupo de entusiastas do trekking e do montanhismo dedicados a explorar novas trilhas, superar limites e promover o turismo sustentável e consciente.
+        O <strong>Capivaras Trek</strong> nasceu da paixão visceral pelas montanhas, pelas matas preservadas e pela liberdade incomparável que só a caminhada ao ar livre proporciona. Somos um grupo de praticantes de trekking e montanhismo dedicados a desbravar novas rotas, superar limites com segurança e promover o ecoturismo consciente.
     </p>
     <p class="about-text">
-        Acreditamos que cada caminhada é uma oportunidade única de conexão com a terra, renovação de energias e fortalecimento de amizades. Seja subindo cumes desafiadores ou contemplando cachoeiras escondidas, nosso objetivo é incentivar a prática segura de atividades ao ar livre, respeitando a fauna, a flora e as comunidades locais.
+        Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizade e aprendizado. Seja no desafio técnico de cumes imponentes ou na contemplação silenciosa de cachoeiras, nosso compromisso é viver a montanha respeitando a fauna, a flora e as comunidades locais.
     </p>
+
+    <!-- Cards de estatísticas/propósito -->
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-icon">🧗‍♂️</div>
+            <div class="stat-number">+50</div>
+            <div class="stat-label">Cumes Conquistados</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">🥾</div>
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Espírito de Equipe</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon">🌿</div>
+            <div class="stat-number">Mínimo Impacto</div>
+            <div class="stat-label">Turismo Consciente</div>
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -404,7 +528,11 @@ st.markdown("""
 # ==================================================
 
 st.markdown("""
-<div class="site-footer">
-    © 2026 Capivaras Trek — Todos os direitos reservados.
+<div class="footer-container">
+    <div class="footer-brand">CAPIVARAS TREK</div>
+    <div class="footer-text">Explorando a montanha com respeito, consciência e paixão.</div>
+    <div class="footer-copy">
+        © 2026 Capivaras Trek — Todos os direitos reservados.
+    </div>
 </div>
 """, unsafe_allow_html=True)
