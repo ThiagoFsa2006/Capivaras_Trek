@@ -223,7 +223,7 @@ def render_hero_carousel():
         }}
 
         .slide-2 {{
-          background-position: center 50%;
+          background-position: center 60%;
         }}
 
         .slide-3 {{
