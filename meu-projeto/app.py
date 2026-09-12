@@ -37,8 +37,8 @@ footer {
 
 .block-container {
     padding-top: 0.5rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
     padding-bottom: 0rem !important;
     max-width: 100% !important;
 }
@@ -48,14 +48,14 @@ footer {
 }
 
 /* ==================================================
-   HEADER RESPONSIVO (DESKTOP E MOBILE)
+   HEADER & NAVBAR (DESKTOP)
    ================================================== */
 
 .custom-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0 15px 0;
+    padding: 10px 0;
     width: 100%;
 }
 
@@ -66,41 +66,35 @@ footer {
 }
 
 .brand-logo {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     object-fit: contain;
 }
 
 .brand-title {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 900;
     color: #1c3320;
     letter-spacing: -0.5px;
     white-space: nowrap;
 }
 
-/* Menu de navegação */
-.nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
+/* Ajustes nos Botões do Streamlit no Desktop */
 div[data-testid="stButton"] button {
     width: 100% !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    min-height: 40px !important;
+    min-height: 50px !important;
     border-bottom: 2px solid transparent !important;
     border-radius: 0px !important;
-    padding: 0 8px !important;
+    padding: 0 10px !important;
     transition: all 0.25s ease-in-out !important;
 }
 
 div[data-testid="stButton"] button p,
 div[data-testid="stButton"] button span {
-    font-size: 14px !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
     color: #1c3320 !important;
     letter-spacing: 0.2px !important;
@@ -108,7 +102,7 @@ div[data-testid="stButton"] button span {
 }
 
 div[data-testid="stButton"] button:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
     border-bottom: 2px solid #244029 !important;
 }
 
@@ -116,27 +110,35 @@ div[data-testid="stButton"] button:hover p {
     color: #244029 !important;
 }
 
-/* REGRA EXCLUSIVA PARA MOBILE */
+div[data-testid="stButton"] button:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ==================================================
+   REGRAS EXCLUSIVAS PARA MOBILE
+   ================================================== */
+
 @media (max-width: 768px) {
+    .block-container {
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
     .custom-header {
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
         text-align: center;
-        gap: 10px;
-        padding: 10px 0;
+        padding: 10px 0 5px 0;
     }
 
     .brand-box {
-        flex-direction: row;
         justify-content: center;
-        align-items: center;
         width: 100%;
     }
 
     .brand-logo {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
     }
 
     .brand-title {
@@ -144,8 +146,8 @@ div[data-testid="stButton"] button:hover p {
     }
 
     div[data-testid="stButton"] button {
-        min-height: 32px !important;
-        padding: 0 4px !important;
+        min-height: 36px !important;
+        padding: 0 2px !important;
     }
 
     div[data-testid="stButton"] button p,
@@ -262,7 +264,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# HEADER (LOGO CENTRALIZADA NO MOBILE)
+# HEADER (ALINHAMENTO EM LINHA PARA DESKTOP)
 # ==================================================
 
 assets_dir = os.path.join(os.path.dirname(__file__), "assets")
@@ -271,24 +273,30 @@ logo_b64 = get_image_base64(logo_file)
 
 logo_tag = f'<img src="{logo_b64}" class="brand-logo">' if logo_b64 else '<span>🏔️</span>'
 
-header_html = f"""
-<div class="custom-header">
-    <div class="brand-box">
-        {logo_tag}
-        <span class="brand-title">Capivaras Trek</span>
-    </div>
-</div>
-"""
+# Colunas: Logo à esquerda (30%), Botões à direita (70%)
+col_header_left, col_header_right = st.columns([3.5, 6.5])
 
-st.markdown(header_html, unsafe_allow_html=True)
+with col_header_left:
+    st.markdown(
+        f"""
+        <div class="custom-header">
+            <div class="brand-box">
+                {logo_tag}
+                <span class="brand-title">Capivaras Trek</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Botões do Menu
-c1, c2, c3, c4, c5 = st.columns(5)
-with c1: st.button("Home")
-with c2: st.button("Trilhas")
-with c3: st.button("Acervo")
-with c4: st.button("Calendário")
-with c5: st.button("Contato")
+with col_header_right:
+    # 5 botões agrupados à direita
+    c1, c2, c3, c4, c5 = st.columns(5)
+    with c1: st.button("Home")
+    with c2: st.button("Trilhas")
+    with c3: st.button("Acervo")
+    with c4: st.button("Calendário")
+    with c5: st.button("Contato")
 
 # ==================================================
 # CARROSSEL HERO
