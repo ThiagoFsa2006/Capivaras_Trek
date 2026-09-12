@@ -458,21 +458,21 @@ def render_hero_carousel():
           <!-- SLIDE 1 -->
           <div class="swiper-slide slide-1" style="background-image: url('{img1}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME<br>DO<br>TAIPABUÇU</h1>
+              <h1 class="hero-title">CUME DO TAIPABUÇU</h1>
             </div>
           </div>
 
           <!-- SLIDE 2 -->
           <div class="swiper-slide slide-2" style="background-image: url('{img2}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CACHOEIRA<br>DA<br>LAPINHA</h1>
+              <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
             </div>
           </div>
 
           <!-- SLIDE 3 -->
           <div class="swiper-slide slide-3" style="background-image: url('{img3}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME<br>DO<br>ANHANGAVA</h1>
+              <h1 class="hero-title">CUME DO ANHANGAVA</h1>
             </div>
           </div>
 
