@@ -120,7 +120,7 @@ div[data-testid="stButton"] button:focus {
 
 .about-card {
     max-width: 1100px;
-    margin: 40px auto 30px auto;
+    margin: 30px auto 30px auto;
     padding: 40px;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 24px;
@@ -216,10 +216,14 @@ div[data-testid="stButton"] button:focus {
         font-size: 12px !important;
     }
 
-    /* Reduz o espaço apenas no celular */
+    /* Ajusta a altura do container do carrossel apenas no celular */
+    iframe[title="streamlit.components.v1.html"] {
+        height: 440px !important;
+    }
+
     .about-card {
         padding: 24px 16px;
-        margin: 10px 0px 20px 0px !important;
+        margin: -10px 0px 20px 0px !important;
         border-radius: 16px;
     }
     
@@ -296,7 +300,7 @@ with col_header_right:
     with c5: st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO (RESPONSIVO REAL)
+# CARROSSEL HERO (AUMENTADO NO DESKTOP)
 # ==================================================
 
 def render_hero_carousel():
@@ -338,7 +342,7 @@ def render_hero_carousel():
 
         .swiper-slide {{
           position: relative;
-          height: 520px;
+          height: 600px;
           background-size: cover;
           display: flex;
           justify-content: center;
@@ -371,7 +375,7 @@ def render_hero_carousel():
         }}
 
         .hero-title {{
-          font-size: 52px;
+          font-size: 56px;
           font-weight: 900;
           letter-spacing: 4px;
           text-transform: uppercase;
@@ -404,19 +408,19 @@ def render_hero_carousel():
         .swiper-button-next, .swiper-button-prev {{
           color: #ffffff !important;
           background: rgba(0, 0, 0, 0.25);
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           backdrop-filter: blur(4px);
           transition: all 0.2s ease;
         }}
 
         .swiper-button-next:after, .swiper-button-prev:after {{
-          font-size: 18px !important;
+          font-size: 20px !important;
           font-weight: bold;
         }}
 
-        /* AJUSTES DE ALTURA EXCLUSIVOS DO MOBILE VIA MEDIA QUERY */
+        /* MOBILE MEDIA QUERY */
         @media (max-width: 768px) {{
           body {{
             padding: 0;
@@ -502,8 +506,8 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    # Altura suficiente para o desktop não cortar a imagem/paginação
-    components.html(carousel_html, height=580)
+    # Altura do iframe ajustada para 660px no Desktop
+    components.html(carousel_html, height=660)
 
 render_hero_carousel()
 
