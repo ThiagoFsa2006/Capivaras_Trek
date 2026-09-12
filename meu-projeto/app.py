@@ -37,8 +37,8 @@ footer {
 
 .block-container {
     padding-top: 0.5rem !important;
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     padding-bottom: 0rem !important;
     max-width: 100% !important;
 }
@@ -51,47 +51,65 @@ footer {
    HEADER & NAVBAR
    ================================================== */
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .logo-text {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 900;
     color: #1c3320;
     letter-spacing: -0.5px;
     line-height: 1;
+    white-space: nowrap;
 }
 
+/* Estilização dos Botões */
 div[data-testid="stButton"] button {
     width: 100% !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    min-height: 50px !important;
-    border-bottom: 3px solid transparent !important;
+    min-height: 45px !important;
+    border-bottom: 2px solid transparent !important;
     border-radius: 0px !important;
     transition: all 0.25s ease-in-out !important;
-    padding: 0 5px !important;
+    padding: 0 4px !important;
 }
 
 div[data-testid="stButton"] button p,
 div[data-testid="stButton"] button span {
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
     color: #1c3320 !important;
-    letter-spacing: 0.3px !important;
-    white-space: nowrap !important;
+    letter-spacing: 0.2px !important;
 }
 
 div[data-testid="stButton"] button:hover {
     background: rgba(255, 255, 255, 0.2) !important;
-    border-bottom: 3px solid #244029 !important;
+    border-bottom: 2px solid #244029 !important;
 }
 
 div[data-testid="stButton"] button:hover p {
     color: #244029 !important;
 }
 
-div[data-testid="stButton"] button:focus {
-    border: none !important;
-    box-shadow: none !important;
+/* Ajustes para telas menores (Mobile) */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 20px;
+    }
+
+    div[data-testid="stButton"] button {
+        min-height: 36px !important;
+    }
+
+    div[data-testid="stButton"] button p,
+    div[data-testid="stButton"] button span {
+        font-size: 12px !important;
+    }
 }
 
 /* ==================================================
@@ -100,8 +118,8 @@ div[data-testid="stButton"] button:focus {
 
 .about-card {
     max-width: 1100px;
-    margin: 50px auto 30px auto;
-    padding: 50px;
+    margin: 40px auto 30px auto;
+    padding: 40px;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 24px;
     backdrop-filter: blur(12px);
@@ -152,22 +170,21 @@ div[data-testid="stButton"] button:focus {
     border: 1px solid #eef2eb;
 }
 
-.stat-icon {
-    font-size: 28px;
-    margin-bottom: 8px;
-}
+.stat-icon { font-size: 28px; margin-bottom: 8px; }
+.stat-number { font-size: 26px; font-weight: 800; color: #244029; }
+.stat-label { font-size: 14px; color: #666; font-weight: 600; margin-top: 4px; }
 
-.stat-number {
-    font-size: 26px;
-    font-weight: 800;
-    color: #244029;
-}
-
-.stat-label {
-    font-size: 14px;
-    color: #666;
-    font-weight: 600;
-    margin-top: 4px;
+/* Responsive para a Seção Quem Somos */
+@media (max-width: 768px) {
+    .about-card {
+        padding: 24px 16px;
+        margin: 20px 0px;
+        border-radius: 16px;
+    }
+    .about-title { font-size: 22px; }
+    .about-text { font-size: 14px; line-height: 1.6; }
+    .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+    .stat-item { padding: 16px; }
 }
 
 /* ==================================================
@@ -177,143 +194,45 @@ div[data-testid="stButton"] button:focus {
 .footer-container {
     background-color: #1c3320;
     color: #e2e8df;
-    padding: 40px 20px 25px 20px;
-    margin-top: 80px;
+    padding: 35px 20px 20px 20px;
+    margin-top: 60px;
     text-align: center;
 }
 
-.footer-brand {
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.footer-text {
-    font-size: 14px;
-    color: #a3b59b;
-    margin-bottom: 20px;
-}
-
-.footer-copy {
-    font-size: 13px;
-    color: #788a71;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-}
-
-/* ==================================================
-   REGRAS DE RESPONSIVIDADE (MOBILE)
-   ================================================== */
-
-@media (max-width: 768px) {
-    .block-container {
-        padding-left: 0.8rem !important;
-        padding-right: 0.8rem !important;
-    }
-
-    /* Força as colunas do menu a ficarem lado a lado na mesma linha no celular */
-    [data-testid="stHorizontalBlock"] {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        align-items: center !important;
-        padding-bottom: 5px !important;
-    }
-
-    [data-testid="column"] {
-        width: auto !important;
-        min-width: fit-content !important;
-        flex: 0 0 auto !important;
-    }
-
-    .logo-text {
-        font-size: 20px;
-        white-space: nowrap;
-    }
-
-    div[data-testid="stButton"] button {
-        min-height: 40px !important;
-        padding: 0 8px !important;
-    }
-
-    div[data-testid="stButton"] button p,
-    div[data-testid="stButton"] button span {
-        font-size: 13px !important;
-    }
-
-    .about-card {
-        padding: 24px 16px;
-        margin: 30px 0px;
-        border-radius: 16px;
-    }
-
-    .about-title {
-        font-size: 22px;
-    }
-
-    .about-text {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .stat-item {
-        padding: 16px;
-    }
-}
+.footer-brand { font-size: 20px; font-weight: 800; color: #ffffff; margin-bottom: 8px; }
+.footer-text { font-size: 13px; color: #a3b59b; margin-bottom: 16px; }
+.footer-copy { font-size: 12px; color: #788a71; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px; }
 
 </style>
 """, unsafe_allow_html=True)
 
 # ==================================================
-# HEADER (Navegação Ajustada para Mobile)
+# HEADER (Navegação Estável)
 # ==================================================
 
-c_logo, c1, c2, c3, c4, c5 = st.columns([2.5, 1, 1, 1, 1, 1])
+# Estrutura de colunas proporcional para desktop e mobile
+c_logo, c1, c2, c3, c4, c5 = st.columns([3, 1, 1, 1, 1, 1])
 
 with c_logo:
-    col_img, col_txt = st.columns([0.3, 2])
-
-    logo_path = os.path.join(
-        os.path.dirname(__file__),
-        "assets",
-        "logo.png"
-    )
-
+    logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
+    
+    col_img, col_txt = st.columns([0.35, 2])
     with col_img:
         if os.path.exists(logo_path):
-            st.image(logo_path, width=45)
+            st.image(logo_path, width=42)
         else:
             st.write("🏔️")
-
     with col_txt:
-        st.markdown(
-            """
-            <div style="padding-top: 8px;">
-                <div class="logo-text">Capivaras Trek</div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        st.markdown('<div class="logo-text" style="padding-top: 6px;">Capivaras Trek</div>', unsafe_allow_html=True)
 
 with c1:
     st.button("Home")
-
 with c2:
     st.button("Trilhas")
-
 with c3:
     st.button("Acervo")
-
 with c4:
     st.button("Calendário")
-
 with c5:
     st.button("Contato")
 
@@ -369,7 +288,7 @@ def render_hero_carousel():
 
         .swiper {{
           width: 100%;
-          border-radius: 28px;
+          border-radius: 24px;
           overflow: hidden;
           box-shadow: 0 15px 35px rgba(0,0,0,0.18);
         }}
@@ -405,7 +324,7 @@ def render_hero_carousel():
           position: relative;
           z-index: 2;
           text-align: center;
-          padding: 0 20px;
+          padding: 0 15px;
         }}
 
         .hero-title {{
@@ -464,7 +383,7 @@ def render_hero_carousel():
           }}
 
           .hero-title {{
-            font-size: 28px;
+            font-size: 26px;
             letter-spacing: 2px;
           }}
 
