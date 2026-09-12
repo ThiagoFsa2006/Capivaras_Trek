@@ -320,7 +320,7 @@ def render_hero_carousel():
         }}
 
         .slide-2 {{
-          background-position: center 35%;
+          background-position: center 40%;
         }}
 
         .slide-3 {{
