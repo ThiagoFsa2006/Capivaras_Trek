@@ -177,7 +177,7 @@ div[data-testid="stButton"] button:focus {
 .stat-label { font-size: 14px; color: #666; font-weight: 600; margin-top: 4px; }
 
 /* ==================================================
-   REGRAS EXCLUSIVAS PARA MOBILE (AJUSTE DE ESPAÇAMENTO)
+   REGRAS EXCLUSIVAS PARA MOBILE
    ================================================== */
 
 @media (max-width: 768px) {
@@ -216,10 +216,10 @@ div[data-testid="stButton"] button:focus {
         font-size: 12px !important;
     }
 
-    /* Reduz o espaço entre o carrossel e o Quem Somos no Mobile */
+    /* Reduz o espaço apenas no celular */
     .about-card {
         padding: 24px 16px;
-        margin: -10px 0px 20px 0px !important;
+        margin: 10px 0px 20px 0px !important;
         border-radius: 16px;
     }
     
@@ -296,7 +296,7 @@ with col_header_right:
     with c5: st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO
+# CARROSSEL HERO (RESPONSIVO REAL)
 # ==================================================
 
 def render_hero_carousel():
@@ -338,7 +338,7 @@ def render_hero_carousel():
 
         .swiper-slide {{
           position: relative;
-          height: 550px;
+          height: 520px;
           background-size: cover;
           display: flex;
           justify-content: center;
@@ -416,6 +416,7 @@ def render_hero_carousel():
           font-weight: bold;
         }}
 
+        /* AJUSTES DE ALTURA EXCLUSIVOS DO MOBILE VIA MEDIA QUERY */
         @media (max-width: 768px) {{
           body {{
             padding: 0;
@@ -501,8 +502,8 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    # Altura ajustada para evitar o espaço em branco inferior no mobile
-    components.html(carousel_html, height=460)
+    # Altura suficiente para o desktop não cortar a imagem/paginação
+    components.html(carousel_html, height=580)
 
 render_hero_carousel()
 
