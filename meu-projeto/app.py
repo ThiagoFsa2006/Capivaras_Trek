@@ -79,7 +79,6 @@ footer {
     white-space: nowrap;
 }
 
-/* Ajustes nos Botões do Streamlit no Desktop */
 div[data-testid="stButton"] button {
     width: 100% !important;
     background: transparent !important;
@@ -113,47 +112,6 @@ div[data-testid="stButton"] button:hover p {
 div[data-testid="stButton"] button:focus {
     border: none !important;
     box-shadow: none !important;
-}
-
-/* ==================================================
-   REGRAS EXCLUSIVAS PARA MOBILE
-   ================================================== */
-
-@media (max-width: 768px) {
-    .block-container {
-        padding-left: 0.8rem !important;
-        padding-right: 0.8rem !important;
-    }
-
-    .custom-header {
-        justify-content: center;
-        text-align: center;
-        padding: 10px 0 5px 0;
-    }
-
-    .brand-box {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .brand-logo {
-        width: 42px;
-        height: 42px;
-    }
-
-    .brand-title {
-        font-size: 22px;
-    }
-
-    div[data-testid="stButton"] button {
-        min-height: 36px !important;
-        padding: 0 2px !important;
-    }
-
-    div[data-testid="stButton"] button p,
-    div[data-testid="stButton"] button span {
-        font-size: 12px !important;
-    }
 }
 
 /* ==================================================
@@ -218,12 +176,53 @@ div[data-testid="stButton"] button:focus {
 .stat-number { font-size: 26px; font-weight: 800; color: #244029; }
 .stat-label { font-size: 14px; color: #666; font-weight: 600; margin-top: 4px; }
 
+/* ==================================================
+   REGRAS EXCLUSIVAS PARA MOBILE (AJUSTE DE ESPAÇAMENTO)
+   ================================================== */
+
 @media (max-width: 768px) {
+    .block-container {
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    .custom-header {
+        justify-content: center;
+        text-align: center;
+        padding: 10px 0 5px 0;
+    }
+
+    .brand-box {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .brand-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand-title {
+        font-size: 22px;
+    }
+
+    div[data-testid="stButton"] button {
+        min-height: 36px !important;
+        padding: 0 2px !important;
+    }
+
+    div[data-testid="stButton"] button p,
+    div[data-testid="stButton"] button span {
+        font-size: 12px !important;
+    }
+
+    /* Reduz o espaço entre o carrossel e o Quem Somos no Mobile */
     .about-card {
         padding: 24px 16px;
-        margin: 20px 0px;
+        margin: -10px 0px 20px 0px !important;
         border-radius: 16px;
     }
+    
     .about-title { font-size: 22px; }
     .about-text { font-size: 14px; line-height: 1.6; }
     .stats-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -264,7 +263,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# HEADER (ALINHAMENTO EM LINHA PARA DESKTOP)
+# HEADER (DESKTOP E MOBILE)
 # ==================================================
 
 assets_dir = os.path.join(os.path.dirname(__file__), "assets")
@@ -273,7 +272,6 @@ logo_b64 = get_image_base64(logo_file)
 
 logo_tag = f'<img src="{logo_b64}" class="brand-logo">' if logo_b64 else '<span>🏔️</span>'
 
-# Colunas: Logo à esquerda (30%), Botões à direita (70%)
 col_header_left, col_header_right = st.columns([3.5, 6.5])
 
 with col_header_left:
@@ -290,7 +288,6 @@ with col_header_left:
     )
 
 with col_header_right:
-    # 5 botões agrupados à direita
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1: st.button("Home")
     with c2: st.button("Trilhas")
@@ -420,6 +417,10 @@ def render_hero_carousel():
         }}
 
         @media (max-width: 768px) {{
+          body {{
+            padding: 0;
+          }}
+
           .swiper {{
             border-radius: 16px;
           }}
@@ -500,7 +501,8 @@ def render_hero_carousel():
     </body>
     </html>
     """
-    components.html(carousel_html, height=600)
+    # Altura ajustada para evitar o espaço em branco inferior no mobile
+    components.html(carousel_html, height=460)
 
 render_hero_carousel()
 
