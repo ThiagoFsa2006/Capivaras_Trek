@@ -166,7 +166,7 @@ def get_image_base64(file_path):
     return ""
 
 # ==================================================
-# CARROSSEL HERO (3 BANNERS)
+# CARROSSEL HERO (COM OS NOVOS TÍTULOS)
 # ==================================================
 
 def render_hero_carousel():
@@ -177,7 +177,7 @@ def render_hero_carousel():
     img2 = get_image_base64(os.path.join(assets_dir, "banner_home1.jpg"))
     img3 = get_image_base64(os.path.join(assets_dir, "banner_home2.jpg"))
 
-    # Fallbacks de segurança caso alguma imagem não seja encontrada no disco
+    # Fallback caso a imagem não exista no caminho especificado
     fallback = "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1600"
     img1 = img1 if img1 else fallback
     img2 = img2 if img2 else fallback
@@ -283,21 +283,21 @@ def render_hero_carousel():
           <!-- SLIDE 1 (banner_home.jpg) -->
           <div class="swiper-slide" style="background-image: url('{img1}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">TRAVESSIA DA<br>SERRA DO MAR</h1>
+              <h1 class="hero-title">CUME DO TAIPABUÇU</h1>
             </div>
           </div>
 
           <!-- SLIDE 2 (banner_home1.jpg) -->
           <div class="swiper-slide" style="background-image: url('{img2}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">ACAMPAMENTO<br>DE ANO NOVO</h1>
+              <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
             </div>
           </div>
 
           <!-- SLIDE 3 (banner_home2.jpg) -->
           <div class="swiper-slide" style="background-image: url('{img3}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">EXPEDIÇÃO<br>CAPIVARAS TREK</h1>
+              <h1 class="hero-title">CUME DO ANHANGAVA</h1>
             </div>
           </div>
 
