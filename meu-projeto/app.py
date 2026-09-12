@@ -248,9 +248,9 @@ def render_hero_carousel():
         .hero-title {{
           font-size: 52px;
           font-weight: 900;
-          letter-spacing: 2px;
+          letter-spacing: 3px;
           text-transform: uppercase;
-          line-height: 1.2;
+          line-height: 1.15;
           color: #ffffff;
           text-shadow: 0 4px 12px rgba(0,0,0,0.6);
         }}
@@ -290,21 +290,21 @@ def render_hero_carousel():
           <!-- SLIDE 1 -->
           <div class="swiper-slide slide-1" style="background-image: url('{img1}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO TAIPABUÇU</h1>
+              <h1 class="hero-title">CUME<br>DO<br>TAIPABUÇO</h1>
             </div>
           </div>
 
           <!-- SLIDE 2 -->
           <div class="swiper-slide slide-2" style="background-image: url('{img2}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CACHOEIRA DA LAPINHA</h1>
+              <h1 class="hero-title">CACHOEIRA<br>DA<br>LAPINHA</h1>
             </div>
           </div>
 
           <!-- SLIDE 3 -->
           <div class="swiper-slide slide-3" style="background-image: url('{img3}');">
             <div class="hero-title-container">
-              <h1 class="hero-title">CUME DO ANHANGAVA</h1>
+              <h1 class="hero-title">CUME<br>DO<br>ANHANGAVA</h1>
             </div>
           </div>
 
@@ -321,7 +321,7 @@ def render_hero_carousel():
         var swiper = new Swiper(".mySwiper", {{
           loop: true,
           autoplay: {{
-            delay: 4000,
+            delay: 7000, /* 7 segundos de duração por slide */
             disableOnInteraction: false,
           }},
           pagination: {{
