@@ -170,18 +170,6 @@ div[data-testid="stButton"] button:focus {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     border: 1px solid #eef2eb;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.stat-item-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.stat-item-link:hover .stat-item {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .stat-icon { font-size: 28px; margin-bottom: 8px; }
@@ -228,6 +216,7 @@ div[data-testid="stButton"] button:focus {
         font-size: 12px !important;
     }
 
+    /* Ajusta a altura do container do carrossel apenas no celular */
     iframe[title="streamlit.components.v1.html"] {
         height: 440px !important;
     }
@@ -311,7 +300,7 @@ with col_header_right:
     with c5: st.button("Contato")
 
 # ==================================================
-# CARROSSEL HERO
+# CARROSSEL HERO (AUMENTADO NO DESKTOP)
 # ==================================================
 
 def render_hero_carousel():
@@ -431,6 +420,7 @@ def render_hero_carousel():
           font-weight: bold;
         }}
 
+        /* MOBILE MEDIA QUERY */
         @media (max-width: 768px) {{
           body {{
             padding: 0;
@@ -516,19 +506,16 @@ def render_hero_carousel():
     </body>
     </html>
     """
+    # Altura do iframe ajustada para 660px no Desktop
     components.html(carousel_html, height=660)
 
 render_hero_carousel()
 
 # ==================================================
-# SEÇÃO: QUEM SOMOS (COM CARD INSTAGRAM)
+# SEÇÃO: QUEM SOMOS
 # ==================================================
 
-# Substitua '1.2k' ou '1200' pelo seu número real de seguidores
-SEGUIDORES_INSTAGRAM = "1.2k+" 
-LINK_INSTAGRAM = "https://www.instagram.com/capivarastrek/" # Coloque o link exato do seu perfil
-
-about_html = f"""
+about_html = """
 <div class="about-card">
 <div class="about-title">Quem Somos</div>
 <div class="about-subtitle-line"></div>
@@ -544,13 +531,11 @@ Acreditamos que cada trilha percorrida é uma oportunidade de reconexão, amizad
 <div class="stat-number">+50</div>
 <div class="stat-label">Cumes Conquistados</div>
 </div>
-<a href="{LINK_INSTAGRAM}" target="_blank" class="stat-item-link">
 <div class="stat-item">
-<div class="stat-icon">📸</div>
-<div class="stat-number">{SEGUIDORES_INSTAGRAM}</div>
-<div class="stat-label">Seguidores no Insta</div>
+<div class="stat-icon">🥾</div>
+<div class="stat-number">100%</div>
+<div class="stat-label">Espírito de Equipe</div>
 </div>
-</a>
 <div class="stat-item">
 <div class="stat-icon">🌿</div>
 <div class="stat-number">Mínimo Impacto</div>
