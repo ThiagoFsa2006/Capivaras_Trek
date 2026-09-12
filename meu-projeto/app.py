@@ -227,7 +227,7 @@ with col_logo:
     with col_txt:
         st.markdown(
             """
-            <div style="padding-top: 12px;">
+            <div style="padding-top: 14px;">
                 <div class="logo-text">Capivaras Trek</div>
             </div>
             """,
@@ -320,7 +320,7 @@ def render_hero_carousel():
         }}
 
         .slide-2 {{
-          background-position: center 40%;
+          background-position: center 35%;
         }}
 
         .slide-3 {{
