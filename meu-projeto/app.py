@@ -221,15 +221,15 @@ def render_hero_carousel():
         /* Regras customizadas de enquadramento para cada slide */
         .slide-1 {{
           /* Ajuste aqui a porcentagem vertical (0% = topo, 50% = centro, 100% = base) */
-          background-position: center 30%;
+          background-position: center 60%;
         }}
 
         .slide-2 {{
-          background-position: center 50%;
+          background-position: center 40%;
         }}
 
         .slide-3 {{
-          background-position: center 40%;
+          background-position: center 70%;
         }}
 
         .swiper-slide::before {{
