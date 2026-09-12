@@ -225,11 +225,11 @@ def render_hero_carousel():
         }}
 
         .slide-2 {{
-          background-position: center 30%;
+          background-position: center 35%;
         }}
 
         .slide-3 {{
-          background-position: center 60%;
+          background-position: center 55%;
         }}
 
         .swiper-slide::before {{
