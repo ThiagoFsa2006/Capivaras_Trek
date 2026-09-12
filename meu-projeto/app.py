@@ -213,7 +213,7 @@ def render_hero_carousel():
           position: relative;
           height: 480px;
           background-size: cover;
-          background-position: center;
+          background-position: 60%;
           display: flex;
           justify-content: center;
           align-items: center;
